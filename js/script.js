@@ -134,16 +134,151 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('[data-carousel]').forEach(initCarousel);
 
-  // ===== GIFT QR FALLBACK =====
+  // ===== GIFT QR — bride / groom tabs =====
   const qrImage = document.getElementById('qr-image');
+  const qrFallbackPath = document.getElementById('qr-fallback-path');
+  const qrTabs = document.querySelectorAll('.qr-tab');
+
   if (qrImage) {
     const markBroken = () => qrImage.closest('.qr-frame').classList.add('is-broken');
-    if (qrImage.complete && qrImage.naturalWidth === 0) {
-      markBroken();
-    } else {
-      qrImage.addEventListener('error', markBroken);
-    }
+
+    const loadQr = (src, label) => {
+      const frame = qrImage.closest('.qr-frame');
+      frame.classList.remove('is-broken');
+      qrImage.src = src;
+      qrImage.alt = `Mã QR mừng cưới ${label}`;
+      if (qrFallbackPath) qrFallbackPath.textContent = src;
+    };
+
+    qrImage.addEventListener('error', markBroken);
+    if (qrImage.complete && qrImage.naturalWidth === 0) markBroken();
+
+    qrTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        qrTabs.forEach((t) => {
+          t.classList.remove('is-active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('is-active');
+        tab.setAttribute('aria-selected', 'true');
+        loadQr(tab.dataset.qrSrc, tab.dataset.qrLabel);
+      });
+    });
   }
+
+  // ===== LIVE WISHES TICKER (reads the wishes Google Sheet via JSONP) =====
+  (function initWishesFeed() {
+    const feedEl = document.getElementById('wishes-feed');
+    if (!feedEl) return;
+
+    const SHEET_ID = '1dsgZl27P4VHeiq0QpEJD5_DP8hPYKLm_KO0BdG35roM';
+    const GID = '1241714880';
+    const BASE_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?gid=${GID}`;
+
+    let wishes = [];
+    let rotationIndex = 0;
+    let isPageVisible = true;
+
+    // The gviz endpoint has no CORS headers, so fetch() would be blocked —
+    // load it as a <script> with a JSONP callback instead.
+    function fetchWishesJsonp() {
+      return new Promise((resolve, reject) => {
+        const callbackName = `__wishesCb_${Date.now()}_${Math.floor(Math.random() * 1e6)}`;
+        const script = document.createElement('script');
+        let settled = false;
+
+        const cleanup = () => {
+          delete window[callbackName];
+          script.remove();
+        };
+
+        window[callbackName] = (json) => {
+          settled = true;
+          cleanup();
+          resolve(json);
+        };
+
+        script.onerror = () => {
+          if (!settled) { cleanup(); reject(new Error('wishes jsonp failed')); }
+        };
+        script.src = `${BASE_URL}&tqx=out:json;responseHandler:${callbackName}`;
+        document.body.appendChild(script);
+
+        setTimeout(() => {
+          if (!settled) { cleanup(); reject(new Error('wishes jsonp timeout')); }
+        }, 8000);
+      });
+    }
+
+    function extractWishes(json) {
+      if (!json || !json.table || !Array.isArray(json.table.rows)) return [];
+      const labels = json.table.cols.map((c) => (c.label || '').toLowerCase());
+      const nameIdx = labels.findIndex((l) => l.includes('tên') || l.includes('ten') || l.includes('name'));
+      const msgIdx = labels.findIndex((l) => l.includes('chúc') || l.includes('chuc') || l.includes('message'));
+      const ni = nameIdx === -1 ? 1 : nameIdx;
+      const mi = msgIdx === -1 ? 2 : msgIdx;
+
+      return json.table.rows
+        .map((row) => {
+          const cells = row.c || [];
+          const name = cells[ni] && cells[ni].v != null ? String(cells[ni].v).trim() : '';
+          const message = cells[mi] && cells[mi].v != null ? String(cells[mi].v).trim() : '';
+          return { name, message };
+        })
+        .filter((w) => w.message);
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function showBubble(wish) {
+      const bubble = document.createElement('div');
+      bubble.className = 'wish-bubble';
+      bubble.innerHTML = `<span class="wish-name">${escapeHtml(wish.name || 'Ẩn danh')}</span>${escapeHtml(wish.message)}`;
+      feedEl.appendChild(bubble);
+
+      while (feedEl.children.length > 3) {
+        feedEl.removeChild(feedEl.firstChild);
+      }
+
+      requestAnimationFrame(() => bubble.classList.add('is-visible'));
+
+      setTimeout(() => {
+        bubble.classList.add('is-leaving');
+        bubble.classList.remove('is-visible');
+        setTimeout(() => bubble.remove(), 500);
+      }, 5200);
+    }
+
+    function tick() {
+      if (!wishes.length || !isPageVisible) return;
+      showBubble(wishes[rotationIndex % wishes.length]);
+      rotationIndex += 1;
+    }
+
+    async function refreshWishes() {
+      try {
+        const json = await fetchWishesJsonp();
+        const list = extractWishes(json);
+        if (list.length) wishes = list;
+      } catch (e) {
+        // network hiccup — keep showing whatever we already have
+      }
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      isPageVisible = document.visibilityState === 'visible';
+    });
+
+    refreshWishes().then(() => {
+      tick();
+      setInterval(tick, 4200);
+    });
+    setInterval(refreshWishes, 15000);
+  })();
 
   // ===== MODALS =====
   document.querySelectorAll('[data-open-modal]').forEach((btn) => {
