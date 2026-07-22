@@ -15,64 +15,70 @@
 </head>
 <body>
 
-<!-- ===== HERO: BOARDING PASS ===== -->
+<!-- ===== HERO: BOARDING PASS (full-bleed photo background) ===== -->
 <section class="hero" id="hero">
-  <p class="hero-kicker">You are invited to board</p>
+  <div class="hero-inner">
+    <p class="hero-kicker reveal">You are invited to board</p>
 
-  <div class="ticket">
-    <div class="ticket-main">
-      <div class="ticket-top">
-        <span class="ticket-airline">✈ WEDDING AIRLINES</span>
-        <span class="ticket-class">BOARDING PASS</span>
+    <div class="ticket reveal">
+      <div class="ticket-main">
+        <div class="ticket-top">
+          <span class="ticket-airline">✈ WEDDING AIRLINES</span>
+          <span class="ticket-class">BOARDING PASS</span>
+        </div>
+
+        <p class="ticket-passenger-label">Passenger</p>
+        <p class="ticket-passenger">Ngọc Tuyền <span>&amp;</span> Lan Anh</p>
+
+        <div class="ticket-row ticket-route">
+          <div>
+            <p class="ticket-label">From</p>
+            <p class="ticket-value">Độc Thân</p>
+          </div>
+          <div class="ticket-plane">✈</div>
+          <div>
+            <p class="ticket-label">To</p>
+            <p class="ticket-value">Hạnh Phúc</p>
+          </div>
+        </div>
+
+        <div class="ticket-row ticket-fields">
+          <div>
+            <p class="ticket-label">Date</p>
+            <p class="ticket-value">14.02.2027</p>
+          </div>
+          <div>
+            <p class="ticket-label">Gate</p>
+            <p class="ticket-value">Vu Quy</p>
+          </div>
+          <div>
+            <p class="ticket-label">Seat</p>
+            <p class="ticket-value">02</p>
+          </div>
+        </div>
+
+        <div class="barcode"></div>
       </div>
 
-      <p class="ticket-passenger-label">Passenger</p>
-      <p class="ticket-passenger">Ngọc Tuyền <span>&amp;</span> Lan Anh</p>
-
-      <div class="ticket-row ticket-route">
-        <div>
-          <p class="ticket-label">From</p>
-          <p class="ticket-value">Độc Thân</p>
-        </div>
-        <div class="ticket-plane">✈</div>
-        <div>
-          <p class="ticket-label">To</p>
-          <p class="ticket-value">Hạnh Phúc</p>
-        </div>
+      <div class="ticket-stub">
+        <p class="stub-code">LOVE-14FEB</p>
+        <p class="stub-vertical">NGỌC TUYỀN &amp; LAN ANH</p>
+        <span class="stub-plane">✈</span>
       </div>
-
-      <div class="ticket-row ticket-fields">
-        <div>
-          <p class="ticket-label">Date</p>
-          <p class="ticket-value">14.02.2027</p>
-        </div>
-        <div>
-          <p class="ticket-label">Gate</p>
-          <p class="ticket-value">Vu Quy</p>
-        </div>
-        <div>
-          <p class="ticket-label">Seat</p>
-          <p class="ticket-value">02</p>
-        </div>
-      </div>
-
-      <div class="barcode"></div>
     </div>
 
-    <div class="ticket-stub">
-      <p class="stub-code">LOVE-14FEB</p>
-      <p class="stub-vertical">NGỌC TUYỀN &amp; LAN ANH</p>
-      <span class="stub-plane">✈</span>
-    </div>
+    <a href="#details" class="btn reveal">Xem chi tiết chuyến bay</a>
   </div>
 
-  <a href="#details" class="btn">Xem chi tiết chuyến bay</a>
+  <a href="#countdown" class="hero-scroll" aria-label="Cuộn xuống">
+    <span></span>
+  </a>
 </section>
 
 <!-- ===== COUNTDOWN ===== -->
-<section class="countdown-section">
-  <h2 class="section-title">Đếm ngược giờ khởi hành</h2>
-  <div id="countdown" class="countdown" data-wedding-date="2027-02-14T09:00:00">
+<section class="countdown-section" id="countdown">
+  <h2 class="section-title reveal">Đếm ngược giờ khởi hành</h2>
+  <div id="countdown-clock" class="countdown reveal" data-wedding-date="2027-02-14T09:00:00">
     <div class="countdown-item"><span id="cd-days">00</span><small>Ngày</small></div>
     <div class="countdown-item"><span id="cd-hours">00</span><small>Giờ</small></div>
     <div class="countdown-item"><span id="cd-minutes">00</span><small>Phút</small></div>
@@ -80,29 +86,44 @@
   </div>
 </section>
 
-<!-- ===== STORY: PASSPORT BIO PAGE ===== -->
+<!-- ===== STORY: PASSPORT BIO PAGE (photo left, content right) ===== -->
 <section class="story">
-  <h2 class="section-title">Hộ chiếu hạnh phúc</h2>
-
-  <div class="passport">
-    <div class="passport-photo">
-      <span>Ảnh</span>
+  <div class="story-grid">
+    <div class="story-image reveal">
+      <img src="images/gallery/photo-04.jpg" alt="Ngọc Tuyền &amp; Lan Anh" loading="lazy">
     </div>
-    <div class="passport-fields">
-      <p><span class="p-label">Họ và tên</span> Đỗ Ngọc Tuyền &amp; Đỗ Thị Lan Anh</p>
-      <p><span class="p-label">Quốc tịch</span> Việt Nam</p>
-      <p><span class="p-label">Loại</span> Đôi lứa — Vợ chồng</p>
-      <p><span class="p-label">Ngày cấp</span> 14/02/2027</p>
-      <p><span class="p-label">Ghi chú</span> Thay đoạn này bằng lời ngỏ hoặc câu chuyện ngắn gọn về hành trình của hai bạn. Sự hiện diện của mọi người chính là món quà quý giá nhất.</p>
+    <div class="story-content">
+      <h2 class="section-title reveal">Hộ chiếu hạnh phúc</h2>
+      <div class="passport reveal">
+        <p><span class="p-label">Họ và tên</span> Đỗ Ngọc Tuyền &amp; Đỗ Thị Lan Anh</p>
+        <p><span class="p-label">Quốc tịch</span> Việt Nam</p>
+        <p><span class="p-label">Loại</span> Đôi lứa — Vợ chồng</p>
+        <p><span class="p-label">Ngày cấp</span> 14/02/2027</p>
+        <p><span class="p-label">Ghi chú</span> Thay đoạn này bằng lời ngỏ hoặc câu chuyện ngắn gọn về hành trình của hai bạn. Sự hiện diện của mọi người chính là món quà quý giá nhất.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MOMENTS: editorial split (content left, photo right) ===== -->
+<section class="moments">
+  <div class="moments-grid">
+    <div class="moments-content">
+      <p class="moments-kicker reveal">Nhật ký bay</p>
+      <h2 class="section-title reveal" style="text-align:left">Chuyến bay của hai chúng tôi</h2>
+      <p class="moments-text reveal">Từ những chuyến đi đầu tiên đến hành trình dài phía trước, mỗi khoảnh khắc bên nhau đều là một điểm dừng đáng nhớ. Cảm ơn vì đã luôn đồng hành — và giờ, hãy cùng bay đến chặng hạnh phúc tiếp theo với chúng tôi.</p>
+    </div>
+    <div class="moments-image reveal">
+      <img src="images/gallery/photo-02.jpg" alt="Ngọc Tuyền &amp; Lan Anh" loading="lazy">
     </div>
   </div>
 </section>
 
 <!-- ===== EVENT DETAILS: MINI TICKETS ===== -->
 <section class="details" id="details">
-  <h2 class="section-title">Lịch trình chuyến bay</h2>
+  <h2 class="section-title reveal">Lịch trình chuyến bay</h2>
 
-  <div class="details-grid">
+  <div class="details-grid reveal">
     <div class="mini-ticket">
       <div class="mini-ticket-top">
         <span>LỄ VU QUY</span>
@@ -123,7 +144,7 @@
   </div>
 
   <p class="map-label">Nhà gái</p>
-  <div class="map-wrap">
+  <div class="map-wrap reveal">
     <iframe
       src="https://www.google.com/maps?q=43+%C4%90.+%C4%90%E1%BB%93ng+K%C3%AAnh%2C+%C4%90%E1%BA%A1i+V%C5%A9%2C+Th%C6%B0+L%C3%A2m%2C+H%C3%A0+N%E1%BB%99i%2C+Vietnam&z=17&output=embed"
       width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy"
@@ -131,7 +152,7 @@
   </div>
 
   <p class="map-label">Nhà trai</p>
-  <div class="map-wrap">
+  <div class="map-wrap reveal">
     <iframe
       src="https://www.google.com/maps?q=21.140598,105.907656&z=17&output=embed"
       width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy"
@@ -139,31 +160,47 @@
   </div>
 </section>
 
-<!-- ===== GALLERY: POLAROID / VISA STAMPS ===== -->
+<!-- ===== GALLERY: MODERN MASONRY JOURNAL ===== -->
 <section class="gallery">
-  <h2 class="section-title">Nhật ký hành trình</h2>
-  <div class="gallery-grid">
-    <figure class="polaroid"><img src="images/gallery/photo-01.jpg" alt="Ảnh cưới 1" loading="lazy"></figure>
-    <figure class="polaroid"><img src="images/gallery/photo-02.jpg" alt="Ảnh cưới 2" loading="lazy"></figure>
-    <figure class="polaroid"><img src="images/gallery/photo-03.jpg" alt="Ảnh cưới 3" loading="lazy"></figure>
-    <figure class="polaroid"><img src="images/gallery/photo-04.jpg" alt="Ảnh cưới 4" loading="lazy"></figure>
-    <!-- <figure class="polaroid"><img src="images/gallery/photo-05.jpg" alt="Ảnh cưới 5" loading="lazy"></figure> -->
+  <h2 class="section-title reveal">Nhật ký hành trình</h2>
+  <div class="gallery-grid reveal">
+    <figure class="gallery-item">
+      <img src="images/gallery/photo-01.jpg" alt="Ảnh cưới 1" loading="lazy">
+      <figcaption><span>STOP 01</span>Hoàng hôn nơi biển cả</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="images/gallery/photo-02.jpg" alt="Ảnh cưới 2" loading="lazy">
+      <figcaption><span>STOP 02</span>Sánh bước bên nhau</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="images/gallery/photo-04.jpg" alt="Ảnh cưới 4" loading="lazy">
+      <figcaption><span>STOP 03</span>Ánh mắt trao nhau</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="images/gallery/photo-03.jpg" alt="Ảnh cưới 3" loading="lazy">
+      <figcaption><span>STOP 04</span>Khoảnh khắc lặng yên</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="images/gallery/photo-05.jpg" alt="Ảnh cưới 5" loading="lazy">
+      <figcaption><span>STOP 05</span>Một hành trình, một lối về</figcaption>
+    </figure>
   </div>
 </section>
 
-<!-- ===== RSVP: CONFIRM SEAT ===== -->
-<section class="rsvp">
-  <h2 class="section-title">Xác nhận chỗ ngồi</h2>
-  <p class="rsvp-text">Vui lòng xác nhận tham dự trước ngày 01/02/2027 để chúng tôi sắp xếp chỗ ngồi cho bạn.</p>
-  <!-- Thay link bên dưới bằng link Google Form của bạn -->
-  <a href="https://forms.gle/your-google-form-id" target="_blank" rel="noopener" class="btn">Confirm Seat →</a>
-</section>
+<!-- ===== FINALE: RSVP + FOOTER (full-bleed photo background) ===== -->
+<section class="finale">
+  <div class="finale-inner reveal">
+    <h2 class="section-title">Xác nhận chỗ ngồi</h2>
+    <p class="rsvp-text">Vui lòng xác nhận tham dự trước ngày 01/02/2027 để chúng tôi sắp xếp chỗ ngồi cho bạn.</p>
+    <!-- Thay link bên dưới bằng link Google Form của bạn -->
+    <a href="https://forms.gle/your-google-form-id" target="_blank" rel="noopener" class="btn btn-light">Confirm Seat →</a>
 
-<!-- ===== FOOTER ===== -->
-<footer class="footer">
-  <p class="footer-names">Ngọc Tuyền <span>&amp;</span> Lan Anh</p>
-  <p>Cảm ơn bạn đã đồng hành cùng chuyến bay của chúng tôi 💛</p>
-</footer>
+    <div class="finale-footer">
+      <p class="footer-names">Ngọc Tuyền <span>&amp;</span> Lan Anh</p>
+      <p>Cảm ơn bạn đã đồng hành cùng chuyến bay của chúng tôi 💛</p>
+    </div>
+  </div>
+</section>
 
 <script src="js/script.js"></script>
 </body>
