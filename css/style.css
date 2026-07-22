@@ -739,6 +739,33 @@ img { max-width: 100%; display: block; }
 .footer-names span { color: #fff; }
 .finale-footer p:last-child { font-size: 0.9rem; opacity: 0.85; }
 
+/* ===== MUSIC TOGGLE ===== */
+.music-toggle {
+  position: absolute;
+  top: calc(env(safe-area-inset-top) + 14px);
+  right: 14px;
+  z-index: 60;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+.music-toggle .action-icon {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.25s var(--ease), background 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+.music-toggle:hover .action-icon,
+.music-toggle:active .action-icon {
+  transform: scale(1.06);
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+}
+.music-toggle:hover .action-icon svg,
+.music-toggle:active .action-icon svg {
+  stroke: var(--color-navy-dark);
+}
+
 /* ===== FLOATING ACTION RAIL (TikTok-style) ===== */
 .action-rail {
   position: absolute;

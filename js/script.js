@@ -1,5 +1,49 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // ===== BACKGROUND MUSIC =====
+  (function initMusic() {
+    const audio = document.getElementById('bg-music');
+    const toggleBtn = document.getElementById('music-toggle');
+    const iconSvg = document.getElementById('music-icon-svg');
+    if (!audio || !toggleBtn || !iconSvg) return;
+
+    const ICON_PLAYING = '<path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18 6a8 8 0 0 1 0 12"/>';
+    const ICON_MUTED = '<path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 9l6 6M22 9l-6 6"/>';
+
+    const reflectState = () => {
+      iconSvg.innerHTML = audio.paused ? ICON_MUTED : ICON_PLAYING;
+      toggleBtn.setAttribute('aria-label', audio.paused ? 'Bật nhạc nền' : 'Tắt nhạc nền');
+    };
+
+    const attemptAutoplay = () => {
+      audio.play().then(reflectState).catch(() => {
+        reflectState();
+        // Most browsers block sound autoplay before any user gesture —
+        // start playing on the first tap/click/keypress instead.
+        const gestureEvents = ['click', 'touchstart', 'keydown'];
+        const resume = () => {
+          gestureEvents.forEach((evt) => document.removeEventListener(evt, resume));
+          audio.play().then(reflectState).catch(() => {});
+        };
+        gestureEvents.forEach((evt) => document.addEventListener(evt, resume, { passive: true }));
+      });
+    };
+
+    toggleBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play().then(reflectState).catch(() => {});
+      } else {
+        audio.pause();
+      }
+    });
+
+    audio.addEventListener('play', reflectState);
+    audio.addEventListener('pause', reflectState);
+
+    reflectState();
+    attemptAutoplay();
+  })();
+
   // ===== COUNTDOWN =====
   const countdownEl = document.getElementById('countdown-clock');
   if (countdownEl) {

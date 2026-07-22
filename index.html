@@ -16,7 +16,19 @@
 </head>
 <body>
 
+<audio id="bg-music" src="audios/nhac.mp3" loop preload="auto"></audio>
+
 <div class="app-frame">
+  <button class="music-toggle" id="music-toggle" type="button" aria-label="Tắt nhạc nền">
+    <span class="action-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" id="music-icon-svg">
+        <path d="M4 9v6h4l5 4V5L8 9H4z"/>
+        <path d="M15.5 8.5a5 5 0 0 1 0 7"/>
+        <path d="M18 6a8 8 0 0 1 0 12"/>
+      </svg>
+    </span>
+  </button>
+
   <div class="feed" id="feed">
 
     <!-- ===== SLIDE 1: HERO / BOARDING PASS ===== -->
