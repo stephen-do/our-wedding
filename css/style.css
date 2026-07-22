@@ -1036,3 +1036,23 @@ img { max-width: 100%; display: block; }
   .section-title { font-size: 1.6rem; }
   .ticket-passenger { font-size: 1.25rem; }
 }
+
+/* ===== DESKTOP / WIDE SCREEN ===== */
+/* Mobile keeps the narrow phone-frame feel; on wide viewports we widen the
+   frame so the wedding photos (mostly landscape) read closer to their
+   natural crop instead of the tight portrait sliver a 430px frame forces. */
+@media (min-width: 900px) {
+  .app-frame {
+    max-width: min(78vw, 780px);
+    max-height: min(960px, 92vh);
+  }
+
+  .slide { padding-left: 2.4rem; padding-right: 2.4rem; }
+
+  .ticket,
+  .passport,
+  .details-scroll,
+  .finale-inner { max-width: 560px; }
+
+  .countdown { max-width: 460px; }
+}
