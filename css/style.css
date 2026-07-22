@@ -115,8 +115,8 @@ img { max-width: 100%; display: block; }
   position: relative;
   width: 100%;
   max-width: 430px;
-  height: 100dvh;
   height: 100vh;
+  height: 100dvh;
   max-height: 100dvh;
   background: var(--color-bg);
   overflow: hidden;

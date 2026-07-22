@@ -1,4 +1,11 @@
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
 document.addEventListener('DOMContentLoaded', () => {
+
+  // Always start on the hero slide — guards against mobile browsers
+  // restoring a previous scroll offset inside the .feed container.
+  const feed = document.getElementById('feed');
+  if (feed) feed.scrollTop = 0;
 
   // ===== BACKGROUND MUSIC =====
   (function initMusic() {
@@ -355,5 +362,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') {
       document.querySelectorAll('.modal.is-open').forEach((m) => m.classList.remove('is-open'));
     }
+  });
+
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted && feed) feed.scrollTop = 0;
   });
 });
