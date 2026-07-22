@@ -339,12 +339,23 @@ img { max-width: 100%; display: block; }
   border-radius: 999px;
 }
 
+.map-label {
+  max-width: 800px;
+  margin: 0 auto 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-navy);
+}
+
 .map-wrap {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
   border-radius: 12px;
   overflow: hidden;
 }
+.map-wrap:last-child { margin-bottom: 0; }
 
 /* ===== GALLERY ===== */
 .gallery {
