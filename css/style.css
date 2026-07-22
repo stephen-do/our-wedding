@@ -1,10 +1,19 @@
 :root {
-  --color-bg: #fdf9f4;
-  --color-bg-alt: #f6ede3;
-  --color-card: #fffdfa;
-  --color-text: #4a3f35;
-  --color-accent: #c99a6c;
-  --color-accent-dark: #a97c4f;
+  --color-bg: #f8f5ec;
+  --color-bg-alt: #eef1e8;
+  --color-card: #ffffff;
+  --color-text: #17241d;
+
+  --color-navy: #0e2a4d;       /* Vietnam Airlines blue */
+  --color-navy-dark: #081b33;
+  --color-green: #163d2c;      /* Vietnamese passport green */
+  --color-green-dark: #0d2921;
+  --color-gold: #c9a227;       /* lotus / foil gold */
+  --color-gold-light: #e6c76a;
+
+  --color-accent: var(--color-gold);
+  --color-accent-dark: var(--color-navy);
+
   --font-display: 'Great Vibes', cursive;
   --font-body: 'Cormorant Garamond', serif;
   --font-mono: 'Special Elite', monospace;
@@ -28,23 +37,23 @@ img { max-width: 100%; display: block; }
   font-size: 2.2rem;
   font-weight: 500;
   margin-bottom: 2rem;
-  color: var(--color-accent-dark);
+  color: var(--color-navy);
 }
 
 .btn {
   display: inline-block;
   padding: 0.8em 2.2em;
-  border: 1px solid var(--color-accent);
+  border: 1px solid var(--color-gold);
   border-radius: 999px;
-  color: var(--color-accent-dark);
+  color: var(--color-navy);
   text-decoration: none;
   font-size: 1.1rem;
   letter-spacing: 0.05em;
   transition: background 0.25s ease, color 0.25s ease;
 }
 .btn:hover {
-  background: var(--color-accent);
-  color: #fff;
+  background: var(--color-gold);
+  color: var(--color-navy-dark);
 }
 
 /* ===== HERO ===== */
@@ -64,18 +73,18 @@ img { max-width: 100%; display: block; }
   letter-spacing: 0.3em;
   text-transform: uppercase;
   font-size: 0.8rem;
-  color: var(--color-accent-dark);
+  color: var(--color-navy);
   font-family: var(--font-mono);
 }
 
-/* ===== BOARDING PASS TICKET ===== */
+/* ===== BOARDING PASS TICKET (Vietnam Airlines palette) ===== */
 .ticket {
   display: flex;
   max-width: 640px;
   width: 100%;
   background: var(--color-card);
   border-radius: 14px;
-  box-shadow: 0 18px 40px rgba(74, 63, 53, 0.18);
+  box-shadow: 0 18px 40px rgba(14, 42, 77, 0.22);
   overflow: visible;
   position: relative;
 }
@@ -93,8 +102,8 @@ img { max-width: 100%; display: block; }
   font-family: var(--font-mono);
   font-size: 0.75rem;
   letter-spacing: 0.08em;
-  color: var(--color-accent-dark);
-  border-bottom: 1px dashed var(--color-accent);
+  color: var(--color-navy);
+  border-bottom: 1px dashed var(--color-gold);
   padding-bottom: 0.8rem;
   margin-bottom: 1rem;
 }
@@ -105,7 +114,7 @@ img { max-width: 100%; display: block; }
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-accent-dark);
+  color: var(--color-navy);
   margin: 0 0 0.2rem;
 }
 
@@ -113,7 +122,7 @@ img { max-width: 100%; display: block; }
   font-size: 1.6rem;
   margin: 0 0 1.4rem;
 }
-.ticket-passenger span { color: var(--color-accent); }
+.ticket-passenger span { color: var(--color-gold); }
 
 .ticket-value {
   font-size: 1.15rem;
@@ -135,13 +144,13 @@ img { max-width: 100%; display: block; }
 .ticket-route > div:first-child { text-align: left; }
 .ticket-route > div:last-child { text-align: right; }
 .ticket-plane {
-  color: var(--color-accent);
+  color: var(--color-gold);
   font-size: 1.3rem;
   transform: rotate(90deg);
 }
 
 .ticket-fields {
-  border-top: 1px dashed var(--color-accent);
+  border-top: 1px dashed var(--color-gold);
   padding-top: 1.2rem;
 }
 
@@ -150,23 +159,23 @@ img { max-width: 100%; display: block; }
   margin-top: 0.5rem;
   background: repeating-linear-gradient(
     90deg,
-    var(--color-text) 0px,
-    var(--color-text) 2px,
+    var(--color-navy) 0px,
+    var(--color-navy) 2px,
     transparent 2px,
     transparent 4px,
-    var(--color-text) 4px,
-    var(--color-text) 5px,
+    var(--color-navy) 4px,
+    var(--color-navy) 5px,
     transparent 5px,
     transparent 9px,
-    var(--color-text) 9px,
-    var(--color-text) 12px,
+    var(--color-navy) 9px,
+    var(--color-navy) 12px,
     transparent 12px,
     transparent 14px
   );
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
-/* ticket stub (right side, perforated) */
+/* ticket stub (right side, perforated) — navy with gold foil accents */
 .ticket-stub {
   flex: 1;
   min-width: 90px;
@@ -176,8 +185,8 @@ img { max-width: 100%; display: block; }
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem 0.6rem;
-  border-left: 2px dashed var(--color-accent);
-  background: var(--color-bg-alt);
+  border-left: 2px dashed var(--color-gold);
+  background: var(--color-navy);
   border-radius: 0 14px 14px 0;
 }
 
@@ -189,17 +198,15 @@ img { max-width: 100%; display: block; }
   left: -13px;
   width: 24px;
   height: 24px;
-  background: var(--color-bg-alt);
   border-radius: 50%;
-  box-shadow: inset 0 0 0 2px var(--color-bg-alt);
 }
-.ticket-stub::before { top: -12px; background: var(--color-bg); }
+.ticket-stub::before { top: -12px; background: var(--color-bg-alt); }
 .ticket-stub::after { bottom: -12px; background: var(--color-bg); }
 
 .stub-code {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--color-accent-dark);
+  color: var(--color-gold-light);
   writing-mode: vertical-rl;
   margin: 0;
 }
@@ -210,10 +217,10 @@ img { max-width: 100%; display: block; }
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   margin: 0;
-  color: var(--color-text);
+  color: #fff;
 }
 .stub-plane {
-  color: var(--color-accent);
+  color: var(--color-gold);
   font-size: 1.1rem;
 }
 
@@ -235,13 +242,14 @@ img { max-width: 100%; display: block; }
   border-radius: 12px;
   padding: 1.2rem 1.6rem;
   min-width: 90px;
+  border-bottom: 3px solid var(--color-gold);
 }
 .countdown-item span {
   display: block;
   font-family: var(--font-mono);
   font-size: 2rem;
   font-weight: 600;
-  color: var(--color-accent-dark);
+  color: var(--color-navy);
 }
 .countdown-item small {
   text-transform: uppercase;
@@ -249,11 +257,12 @@ img { max-width: 100%; display: block; }
   font-size: 0.75rem;
 }
 
-/* ===== STORY / PASSPORT PAGE ===== */
+/* ===== STORY / PASSPORT PAGE (Vietnamese passport palette) ===== */
 .story {
   padding: 4rem 1.5rem;
-  background: var(--color-bg-alt);
+  background: var(--color-green);
 }
+.story .section-title { color: var(--color-gold-light); }
 
 .passport {
   max-width: 700px;
@@ -261,21 +270,21 @@ img { max-width: 100%; display: block; }
   display: flex;
   gap: 1.8rem;
   background: var(--color-card);
-  border: 1px solid var(--color-accent);
+  border: 1px solid var(--color-gold);
   border-radius: 10px;
   padding: 1.8rem;
-  box-shadow: 0 10px 30px rgba(74, 63, 53, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 .passport-photo {
   flex: 0 0 110px;
   height: 140px;
-  border: 2px solid var(--color-accent-dark);
+  border: 2px solid var(--color-green);
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-accent-dark);
+  color: var(--color-green);
   font-family: var(--font-mono);
   font-size: 0.85rem;
   background: var(--color-bg-alt);
@@ -291,7 +300,7 @@ img { max-width: 100%; display: block; }
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-accent-dark);
+  color: var(--color-green);
 }
 
 /* ===== DETAILS ===== */
@@ -309,7 +318,7 @@ img { max-width: 100%; display: block; }
 
 .mini-ticket {
   background: var(--color-bg-alt);
-  border: 1px dashed var(--color-accent);
+  border: 1px dashed var(--color-gold);
   border-radius: 12px;
   padding: 1.6rem;
   text-align: left;
@@ -320,12 +329,12 @@ img { max-width: 100%; display: block; }
   font-family: var(--font-mono);
   font-size: 0.75rem;
   letter-spacing: 0.08em;
-  color: var(--color-accent-dark);
+  color: var(--color-navy);
   margin-bottom: 0.8rem;
 }
 .mini-ticket-tag {
-  background: var(--color-accent);
-  color: #fff;
+  background: var(--color-navy);
+  color: var(--color-gold-light);
   padding: 0.15em 0.6em;
   border-radius: 999px;
 }
@@ -356,7 +365,7 @@ img { max-width: 100%; display: block; }
   background: #fff;
   padding: 0.7rem 0.7rem 1.4rem;
   margin: 0;
-  box-shadow: 0 8px 20px rgba(74, 63, 53, 0.15);
+  box-shadow: 0 8px 20px rgba(14, 42, 77, 0.15);
   transform: rotate(-2deg);
 }
 .polaroid:nth-child(even) { transform: rotate(2deg); }
@@ -383,14 +392,16 @@ img { max-width: 100%; display: block; }
 .footer {
   padding: 3rem 1.5rem;
   text-align: center;
-  background: var(--color-bg-alt);
+  background: var(--color-green-dark);
+  color: #f2ede0;
 }
 .footer-names {
   font-family: var(--font-display);
   font-size: 2.4rem;
   margin-bottom: 0.5rem;
+  color: var(--color-gold-light);
 }
-.footer-names span { color: var(--color-accent); }
+.footer-names span { color: #fff; }
 
 @media (max-width: 560px) {
   .section-title { font-size: 1.7rem; }
@@ -398,7 +409,7 @@ img { max-width: 100%; display: block; }
   .ticket-stub {
     flex-direction: row;
     border-left: none;
-    border-top: 2px dashed var(--color-accent);
+    border-top: 2px dashed var(--color-gold);
     border-radius: 0 0 14px 14px;
     padding: 1rem 1.5rem;
   }
