@@ -2,7 +2,8 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0e2a4d">
 <title>Ngọc Tuyền &amp; Lan Anh - Boarding Pass</title>
 <meta name="description" content="Thiệp mời cưới của Đỗ Ngọc Tuyền và Đỗ Thị Lan Anh - phong cách vé máy bay & hộ chiếu">
 
@@ -15,192 +16,203 @@
 </head>
 <body>
 
-<!-- ===== HERO: BOARDING PASS (full-bleed photo background) ===== -->
-<section class="hero" id="hero">
-  <div class="hero-inner">
-    <p class="hero-kicker reveal">You are invited to board</p>
+<div class="app-frame">
+  <div class="feed" id="feed">
 
-    <div class="ticket reveal">
-      <div class="ticket-main">
-        <div class="ticket-top">
-          <span class="ticket-airline">✈ WEDDING AIRLINES</span>
-          <span class="ticket-class">BOARDING PASS</span>
+    <!-- ===== SLIDE 1: HERO / BOARDING PASS ===== -->
+    <section class="slide slide-hero" id="hero">
+      <p class="hero-kicker reveal">You are invited to board</p>
+
+      <div class="ticket reveal">
+        <div class="ticket-main">
+          <div class="ticket-top">
+            <span class="ticket-airline">✈ WEDDING AIRLINES</span>
+            <span class="ticket-class">BOARDING PASS</span>
+          </div>
+
+          <p class="ticket-passenger-label">Passenger</p>
+          <p class="ticket-passenger">Ngọc Tuyền <span>&amp;</span> Lan Anh</p>
+
+          <div class="ticket-row ticket-route">
+            <div>
+              <p class="ticket-label">From</p>
+              <p class="ticket-value">Độc Thân</p>
+            </div>
+            <div class="ticket-plane">✈</div>
+            <div>
+              <p class="ticket-label">To</p>
+              <p class="ticket-value">Hạnh Phúc</p>
+            </div>
+          </div>
+
+          <div class="ticket-row ticket-fields">
+            <div>
+              <p class="ticket-label">Date</p>
+              <p class="ticket-value">19–20.09.2026</p>
+            </div>
+            <div>
+              <p class="ticket-label">Gate</p>
+              <p class="ticket-value">Vu Quy</p>
+            </div>
+            <div>
+              <p class="ticket-label">Seat</p>
+              <p class="ticket-value">02</p>
+            </div>
+          </div>
+
+          <div class="barcode"></div>
         </div>
 
-        <p class="ticket-passenger-label">Passenger</p>
-        <p class="ticket-passenger">Ngọc Tuyền <span>&amp;</span> Lan Anh</p>
-
-        <div class="ticket-row ticket-route">
-          <div>
-            <p class="ticket-label">From</p>
-            <p class="ticket-value">Độc Thân</p>
-          </div>
-          <div class="ticket-plane">✈</div>
-          <div>
-            <p class="ticket-label">To</p>
-            <p class="ticket-value">Hạnh Phúc</p>
-          </div>
+        <div class="ticket-stub">
+          <p class="stub-code">LOVE-19SEP</p>
+          <p class="stub-vertical">NGỌC TUYỀN &amp; LAN ANH</p>
+          <span class="stub-plane">✈</span>
         </div>
-
-        <div class="ticket-row ticket-fields">
-          <div>
-            <p class="ticket-label">Date</p>
-            <p class="ticket-value">14.02.2027</p>
-          </div>
-          <div>
-            <p class="ticket-label">Gate</p>
-            <p class="ticket-value">Vu Quy</p>
-          </div>
-          <div>
-            <p class="ticket-label">Seat</p>
-            <p class="ticket-value">02</p>
-          </div>
-        </div>
-
-        <div class="barcode"></div>
       </div>
 
-      <div class="ticket-stub">
-        <p class="stub-code">LOVE-14FEB</p>
-        <p class="stub-vertical">NGỌC TUYỀN &amp; LAN ANH</p>
-        <span class="stub-plane">✈</span>
+      <span class="hero-hint reveal">Vuốt lên để xem hành trình ↑</span>
+    </section>
+
+    <!-- ===== SLIDE 2: COUNTDOWN ===== -->
+    <section class="slide slide-countdown" id="countdown">
+      <h2 class="section-title reveal">Đếm ngược giờ khởi hành</h2>
+      <div id="countdown-clock" class="countdown reveal" data-wedding-date="2026-09-19T08:00:00">
+        <div class="countdown-item"><span id="cd-days">00</span><small>Ngày</small></div>
+        <div class="countdown-item"><span id="cd-hours">00</span><small>Giờ</small></div>
+        <div class="countdown-item"><span id="cd-minutes">00</span><small>Phút</small></div>
+        <div class="countdown-item"><span id="cd-seconds">00</span><small>Giây</small></div>
       </div>
-    </div>
+      <p class="countdown-sub reveal">19 – 20 · 09 · 2026</p>
+    </section>
 
-    <a href="#details" class="btn reveal">Xem chi tiết chuyến bay</a>
-  </div>
-
-  <a href="#countdown" class="hero-scroll" aria-label="Cuộn xuống">
-    <span></span>
-  </a>
-</section>
-
-<!-- ===== COUNTDOWN ===== -->
-<section class="countdown-section" id="countdown">
-  <h2 class="section-title reveal">Đếm ngược giờ khởi hành</h2>
-  <div id="countdown-clock" class="countdown reveal" data-wedding-date="2027-02-14T09:00:00">
-    <div class="countdown-item"><span id="cd-days">00</span><small>Ngày</small></div>
-    <div class="countdown-item"><span id="cd-hours">00</span><small>Giờ</small></div>
-    <div class="countdown-item"><span id="cd-minutes">00</span><small>Phút</small></div>
-    <div class="countdown-item"><span id="cd-seconds">00</span><small>Giây</small></div>
-  </div>
-</section>
-
-<!-- ===== STORY: PASSPORT BIO PAGE (photo left, content right) ===== -->
-<section class="story">
-  <div class="story-grid">
-    <div class="story-image reveal">
-      <img src="images/gallery/photo-04.jpg" alt="Ngọc Tuyền &amp; Lan Anh" loading="lazy">
-    </div>
-    <div class="story-content">
-      <h2 class="section-title reveal">Hộ chiếu hạnh phúc</h2>
+    <!-- ===== SLIDE 3: STORY / PASSPORT ===== -->
+    <section class="slide slide-story" id="story">
       <div class="passport reveal">
+        <h2 class="section-title">Hộ chiếu hạnh phúc</h2>
         <p><span class="p-label">Họ và tên</span> Đỗ Ngọc Tuyền &amp; Đỗ Thị Lan Anh</p>
         <p><span class="p-label">Quốc tịch</span> Việt Nam</p>
         <p><span class="p-label">Loại</span> Đôi lứa — Vợ chồng</p>
-        <p><span class="p-label">Ngày cấp</span> 14/02/2027</p>
+        <p><span class="p-label">Ngày cấp</span> 19–20/09/2026</p>
         <p><span class="p-label">Ghi chú</span> Thay đoạn này bằng lời ngỏ hoặc câu chuyện ngắn gọn về hành trình của hai bạn. Sự hiện diện của mọi người chính là món quà quý giá nhất.</p>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ===== MOMENTS: editorial split (content left, photo right) ===== -->
-<section class="moments">
-  <div class="moments-grid">
-    <div class="moments-content">
-      <p class="moments-kicker reveal">Nhật ký bay</p>
-      <h2 class="section-title reveal" style="text-align:left">Chuyến bay của hai chúng tôi</h2>
-      <p class="moments-text reveal">Từ những chuyến đi đầu tiên đến hành trình dài phía trước, mỗi khoảnh khắc bên nhau đều là một điểm dừng đáng nhớ. Cảm ơn vì đã luôn đồng hành — và giờ, hãy cùng bay đến chặng hạnh phúc tiếp theo với chúng tôi.</p>
-    </div>
-    <div class="moments-image reveal">
-      <img src="images/gallery/photo-02.jpg" alt="Ngọc Tuyền &amp; Lan Anh" loading="lazy">
-    </div>
-  </div>
-</section>
-
-<!-- ===== EVENT DETAILS: MINI TICKETS ===== -->
-<section class="details" id="details">
-  <h2 class="section-title reveal">Lịch trình chuyến bay</h2>
-
-  <div class="details-grid reveal">
-    <div class="mini-ticket">
-      <div class="mini-ticket-top">
-        <span>LỄ VU QUY</span>
-        <span class="mini-ticket-tag">FLIGHT 01</span>
+    <!-- ===== SLIDE 4: GALLERY — HORIZONTAL AUTO-SLIDING CAROUSEL ===== -->
+    <section class="slide slide-gallery" id="gallery">
+      <h2 class="section-title reveal">Nhật ký hành trình</h2>
+      <div class="carousel-wrap reveal" data-carousel>
+        <div class="carousel">
+          <figure class="carousel-item">
+            <img src="images/gallery/photo-01.jpg" alt="Ảnh cưới 1" loading="lazy">
+            <figcaption><span>STOP 01</span>Hoàng hôn nơi biển cả</figcaption>
+          </figure>
+          <figure class="carousel-item">
+            <img src="images/gallery/photo-02.jpg" alt="Ảnh cưới 2" loading="lazy">
+            <figcaption><span>STOP 02</span>Sánh bước bên nhau</figcaption>
+          </figure>
+          <figure class="carousel-item">
+            <img src="images/gallery/photo-04.jpg" alt="Ảnh cưới 4" loading="lazy">
+            <figcaption><span>STOP 03</span>Ánh mắt trao nhau</figcaption>
+          </figure>
+          <figure class="carousel-item">
+            <img src="images/gallery/photo-03.jpg" alt="Ảnh cưới 3" loading="lazy">
+            <figcaption><span>STOP 04</span>Khoảnh khắc lặng yên</figcaption>
+          </figure>
+          <figure class="carousel-item">
+            <img src="images/gallery/photo-05.jpg" alt="Ảnh cưới 5" loading="lazy">
+            <figcaption><span>STOP 05</span>Một hành trình, một lối về</figcaption>
+          </figure>
+        </div>
+        <div class="carousel-dots"></div>
       </div>
-      <p class="ticket-value">08:00 — Chủ nhật, 14/02/2027</p>
-      <p class="ticket-label">Nhà gái, 43 Đường Đồng Kênh, Đại Vỹ, Thư Lâm, Hà Nội</p>
-    </div>
+    </section>
 
-    <div class="mini-ticket">
-      <div class="mini-ticket-top">
-        <span>NHÀ TRAI</span>
-        <span class="mini-ticket-tag">FLIGHT 02</span>
+    <!-- ===== SLIDE 5: DETAILS / SCHEDULE ===== -->
+    <section class="slide slide-details" id="details">
+      <h2 class="section-title reveal">Lịch trình chuyến bay</h2>
+
+      <div class="details-scroll reveal">
+        <div class="mini-ticket">
+          <div class="mini-ticket-top">
+            <span>LỄ VU QUY</span>
+            <span class="mini-ticket-tag">FLIGHT 01</span>
+          </div>
+          <p class="ticket-value">08:00 — Thứ Bảy, 19/09/2026</p>
+          <p class="ticket-label">Nhà gái, 43 Đường Đồng Kênh, Đại Vỹ, Thư Lâm, Hà Nội</p>
+          <a class="btn-direction" href="https://www.google.com/maps?q=43+%C4%90.+%C4%90%E1%BB%93ng+K%C3%AAnh%2C+%C4%90%E1%BA%A1i+V%C5%A9%2C+Th%C6%B0+L%C3%A2m%2C+H%C3%A0+N%E1%BB%99i%2C+Vietnam&z=17" target="_blank" rel="noopener">Chỉ đường trên Google Maps →</a>
+        </div>
+
+        <div class="mini-ticket">
+          <div class="mini-ticket-top">
+            <span>NHÀ TRAI</span>
+            <span class="mini-ticket-tag">FLIGHT 02</span>
+          </div>
+          <p class="ticket-value">10:00 — Chủ Nhật, 20/09/2026</p>
+          <p class="ticket-label">Thôn Đại Vỹ, Xã Thư Lâm, Hà Nội</p>
+          <a class="btn-direction" href="https://www.google.com/maps?q=21.140598,105.907656&z=17" target="_blank" rel="noopener">Chỉ đường trên Google Maps →</a>
+        </div>
       </div>
-      <p class="ticket-value">10:00 — Chủ nhật, 14/02/2027</p>
-      <p class="ticket-label">Thôn Đại Vỹ, Xã Thư Lâm, Hà Nội</p>
+    </section>
+
+    <!-- ===== SLIDE 6: FINALE — RSVP + THANK YOU ===== -->
+    <section class="slide slide-finale" id="finale">
+      <div class="finale-inner reveal">
+        <h2 class="section-title">Xác nhận chỗ ngồi</h2>
+        <p class="rsvp-text">Vui lòng xác nhận tham dự trước ngày 05/09/2026 để chúng tôi sắp xếp chỗ ngồi cho bạn.</p>
+        <!-- Thay link bên dưới bằng link Google Form RSVP của bạn -->
+        <a href="https://forms.gle/your-google-form-id" target="_blank" rel="noopener" class="btn btn-light">Confirm Seat →</a>
+
+        <div class="finale-footer">
+          <p class="footer-names">Ngọc Tuyền <span>&amp;</span> Lan Anh</p>
+          <p>Cảm ơn bạn đã đồng hành cùng chuyến bay của chúng tôi 💛</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ===== FLOATING ACTION RAIL (TikTok-style) ===== -->
+  <div class="action-rail">
+    <!-- Thay link bên dưới bằng link Google Form RSVP của bạn -->
+    <a class="action-btn" href="https://forms.gle/your-google-form-id" target="_blank" rel="noopener">
+      <span class="action-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4V8z"/><path d="M10 6v2M10 11v2M10 16v2" stroke-dasharray="2 2"/></svg>
+      </span>
+      <span class="action-label">Xác nhận</span>
+    </a>
+
+    <button class="action-btn" type="button" data-open-modal="gift-modal">
+      <span class="action-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 12v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8"/><path d="M22 8H2v4h20V8z"/><path d="M12 8v13"/><path d="M12 8c-1.5-4-6-4-6-1s4 1 6 1z"/><path d="M12 8c1.5-4 6-4 6-1s-4 1-6 1z"/></svg>
+      </span>
+      <span class="action-label">Tặng quà</span>
+    </button>
+
+    <!-- Thay link bên dưới bằng link Google Form lời chúc riêng của bạn -->
+    <a class="action-btn" href="https://forms.gle/your-wishes-form-id" target="_blank" rel="noopener">
+      <span class="action-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      </span>
+      <span class="action-label">Lời chúc</span>
+    </a>
+  </div>
+
+  <!-- ===== GIFT / QR MODAL ===== -->
+  <div class="modal" id="gift-modal">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card">
+      <button class="modal-close" type="button" data-close-modal aria-label="Đóng">&times;</button>
+      <h3 class="modal-title">Mừng cưới</h3>
+      <p class="modal-text">Sự hiện diện của bạn đã là món quà quý giá nhất. Nếu muốn gửi thêm lời chúc bằng một phần quà nhỏ, bạn có thể quét mã bên dưới.</p>
+      <div class="qr-frame">
+        <!-- Thay bằng ảnh QR chuyển khoản thật của bạn tại images/qr-gift.jpg -->
+        <img src="images/qr_chu_re.jpg" alt="Mã QR mừng cưới" id="qr-image">
+        <p class="qr-fallback" id="qr-fallback">Chưa có ảnh QR — thêm ảnh vào <code>images/qr-gift.jpg</code></p>
+      </div>
     </div>
   </div>
 
-  <p class="map-label">Nhà gái</p>
-  <div class="map-wrap reveal">
-    <iframe
-      src="https://www.google.com/maps?q=43+%C4%90.+%C4%90%E1%BB%93ng+K%C3%AAnh%2C+%C4%90%E1%BA%A1i+V%C5%A9%2C+Th%C6%B0+L%C3%A2m%2C+H%C3%A0+N%E1%BB%99i%2C+Vietnam&z=17&output=embed"
-      width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade" title="Địa điểm nhà gái"></iframe>
-  </div>
-
-  <p class="map-label">Nhà trai</p>
-  <div class="map-wrap reveal">
-    <iframe
-      src="https://www.google.com/maps?q=21.140598,105.907656&z=17&output=embed"
-      width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade" title="Địa điểm nhà trai"></iframe>
-  </div>
-</section>
-
-<!-- ===== GALLERY: MODERN MASONRY JOURNAL ===== -->
-<section class="gallery">
-  <h2 class="section-title reveal">Nhật ký hành trình</h2>
-  <div class="gallery-grid reveal">
-    <figure class="gallery-item">
-      <img src="images/gallery/photo-01.jpg" alt="Ảnh cưới 1" loading="lazy">
-      <figcaption><span>STOP 01</span>Hoàng hôn nơi biển cả</figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="images/gallery/photo-02.jpg" alt="Ảnh cưới 2" loading="lazy">
-      <figcaption><span>STOP 02</span>Sánh bước bên nhau</figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="images/gallery/photo-04.jpg" alt="Ảnh cưới 4" loading="lazy">
-      <figcaption><span>STOP 03</span>Ánh mắt trao nhau</figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="images/gallery/photo-03.jpg" alt="Ảnh cưới 3" loading="lazy">
-      <figcaption><span>STOP 04</span>Khoảnh khắc lặng yên</figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="images/gallery/photo-05.jpg" alt="Ảnh cưới 5" loading="lazy">
-      <figcaption><span>STOP 05</span>Một hành trình, một lối về</figcaption>
-    </figure>
-  </div>
-</section>
-
-<!-- ===== FINALE: RSVP + FOOTER (full-bleed photo background) ===== -->
-<section class="finale">
-  <div class="finale-inner reveal">
-    <h2 class="section-title">Xác nhận chỗ ngồi</h2>
-    <p class="rsvp-text">Vui lòng xác nhận tham dự trước ngày 01/02/2027 để chúng tôi sắp xếp chỗ ngồi cho bạn.</p>
-    <!-- Thay link bên dưới bằng link Google Form của bạn -->
-    <a href="https://forms.gle/your-google-form-id" target="_blank" rel="noopener" class="btn btn-light">Confirm Seat →</a>
-
-    <div class="finale-footer">
-      <p class="footer-names">Ngọc Tuyền <span>&amp;</span> Lan Anh</p>
-      <p>Cảm ơn bạn đã đồng hành cùng chuyến bay của chúng tôi 💛</p>
-    </div>
-  </div>
-</section>
+</div>
 
 <script src="js/script.js"></script>
 </body>
