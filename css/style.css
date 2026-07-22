@@ -1,11 +1,13 @@
 :root {
   --color-bg: #fdf9f4;
   --color-bg-alt: #f6ede3;
+  --color-card: #fffdfa;
   --color-text: #4a3f35;
   --color-accent: #c99a6c;
   --color-accent-dark: #a97c4f;
   --font-display: 'Great Vibes', cursive;
   --font-body: 'Cormorant Garamond', serif;
+  --font-mono: 'Special Elite', monospace;
 }
 
 * { box-sizing: border-box; }
@@ -49,36 +51,170 @@ img { max-width: 100%; display: block; }
 .hero {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 2rem 1.5rem;
+  gap: 2rem;
+  padding: 3rem 1.2rem;
   background: linear-gradient(180deg, var(--color-bg-alt), var(--color-bg));
 }
 
 .hero-kicker {
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--color-accent-dark);
+  font-family: var(--font-mono);
+}
+
+/* ===== BOARDING PASS TICKET ===== */
+.ticket {
+  display: flex;
+  max-width: 640px;
+  width: 100%;
+  background: var(--color-card);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(74, 63, 53, 0.18);
+  overflow: visible;
+  position: relative;
+}
+
+.ticket-main {
+  flex: 3;
+  padding: 2rem 1.8rem;
+  text-align: left;
+}
+
+.ticket-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--color-accent-dark);
+  border-bottom: 1px dashed var(--color-accent);
+  padding-bottom: 0.8rem;
   margin-bottom: 1rem;
 }
 
-.hero-names {
-  font-family: var(--font-display);
-  font-size: 5rem;
-  margin: 0 0 1rem;
-  color: var(--color-text);
-}
-.hero-names span {
-  color: var(--color-accent);
-  padding: 0 0.2em;
+.ticket-passenger-label,
+.ticket-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent-dark);
+  margin: 0 0 0.2rem;
 }
 
-.hero-date {
-  font-size: 1.4rem;
-  letter-spacing: 0.15em;
-  margin-bottom: 2rem;
+.ticket-passenger {
+  font-size: 1.6rem;
+  margin: 0 0 1.4rem;
+}
+.ticket-passenger span { color: var(--color-accent); }
+
+.ticket-value {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.ticket-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.4rem;
+  gap: 1rem;
+}
+
+.ticket-route {
+  align-items: center;
+  text-align: center;
+}
+.ticket-route > div:first-child { text-align: left; }
+.ticket-route > div:last-child { text-align: right; }
+.ticket-plane {
+  color: var(--color-accent);
+  font-size: 1.3rem;
+  transform: rotate(90deg);
+}
+
+.ticket-fields {
+  border-top: 1px dashed var(--color-accent);
+  padding-top: 1.2rem;
+}
+
+.barcode {
+  height: 42px;
+  margin-top: 0.5rem;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-text) 0px,
+    var(--color-text) 2px,
+    transparent 2px,
+    transparent 4px,
+    var(--color-text) 4px,
+    var(--color-text) 5px,
+    transparent 5px,
+    transparent 9px,
+    var(--color-text) 9px,
+    var(--color-text) 12px,
+    transparent 12px,
+    transparent 14px
+  );
+  opacity: 0.85;
+}
+
+/* ticket stub (right side, perforated) */
+.ticket-stub {
+  flex: 1;
+  min-width: 90px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 0.6rem;
+  border-left: 2px dashed var(--color-accent);
+  background: var(--color-bg-alt);
+  border-radius: 0 14px 14px 0;
+}
+
+/* punch holes creating the "torn ticket" illusion */
+.ticket-stub::before,
+.ticket-stub::after {
+  content: '';
+  position: absolute;
+  left: -13px;
+  width: 24px;
+  height: 24px;
+  background: var(--color-bg-alt);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 2px var(--color-bg-alt);
+}
+.ticket-stub::before { top: -12px; background: var(--color-bg); }
+.ticket-stub::after { bottom: -12px; background: var(--color-bg); }
+
+.stub-code {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-accent-dark);
+  writing-mode: vertical-rl;
+  margin: 0;
+}
+.stub-vertical {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  margin: 0;
+  color: var(--color-text);
+}
+.stub-plane {
+  color: var(--color-accent);
+  font-size: 1.1rem;
 }
 
 /* ===== COUNTDOWN ===== */
@@ -102,7 +238,8 @@ img { max-width: 100%; display: block; }
 }
 .countdown-item span {
   display: block;
-  font-size: 2.2rem;
+  font-family: var(--font-mono);
+  font-size: 2rem;
   font-weight: 600;
   color: var(--color-accent-dark);
 }
@@ -112,21 +249,54 @@ img { max-width: 100%; display: block; }
   font-size: 0.75rem;
 }
 
-/* ===== STORY ===== */
+/* ===== STORY / PASSPORT PAGE ===== */
 .story {
   padding: 4rem 1.5rem;
-  max-width: 640px;
-  margin: 0 auto;
-  text-align: center;
+  background: var(--color-bg-alt);
 }
-.story-text {
-  font-size: 1.15rem;
+
+.passport {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  gap: 1.8rem;
+  background: var(--color-card);
+  border: 1px solid var(--color-accent);
+  border-radius: 10px;
+  padding: 1.8rem;
+  box-shadow: 0 10px 30px rgba(74, 63, 53, 0.1);
+}
+
+.passport-photo {
+  flex: 0 0 110px;
+  height: 140px;
+  border: 2px solid var(--color-accent-dark);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent-dark);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  background: var(--color-bg-alt);
+}
+
+.passport-fields p {
+  margin: 0 0 0.7rem;
+  font-size: 1.05rem;
+}
+.p-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent-dark);
 }
 
 /* ===== DETAILS ===== */
 .details {
   padding: 4rem 1.5rem;
-  background: var(--color-bg-alt);
 }
 
 .details-grid {
@@ -137,19 +307,28 @@ img { max-width: 100%; display: block; }
   margin: 0 auto 2.5rem;
 }
 
-.detail-card {
-  background: var(--color-bg);
+.mini-ticket {
+  background: var(--color-bg-alt);
+  border: 1px dashed var(--color-accent);
   border-radius: 12px;
-  padding: 2rem;
-  text-align: center;
+  padding: 1.6rem;
+  text-align: left;
 }
-.detail-card h3 {
+.mini-ticket-top {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
   color: var(--color-accent-dark);
-  margin-top: 0;
-  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
 }
-.detail-time { font-weight: 600; }
-.detail-place { margin-bottom: 0; }
+.mini-ticket-tag {
+  background: var(--color-accent);
+  color: #fff;
+  padding: 0.15em 0.6em;
+  border-radius: 999px;
+}
 
 .map-wrap {
   max-width: 800px;
@@ -162,24 +341,33 @@ img { max-width: 100%; display: block; }
 .gallery {
   padding: 4rem 1.5rem;
   text-align: center;
+  background: var(--color-bg-alt);
 }
 
 .gallery-grid {
   display: grid;
-  gap: 0.8rem;
+  gap: 1.4rem;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   max-width: 900px;
   margin: 0 auto;
 }
-.gallery-grid img {
-  border-radius: 10px;
+
+.polaroid {
+  background: #fff;
+  padding: 0.7rem 0.7rem 1.4rem;
+  margin: 0;
+  box-shadow: 0 8px 20px rgba(74, 63, 53, 0.15);
+  transform: rotate(-2deg);
+}
+.polaroid:nth-child(even) { transform: rotate(2deg); }
+.polaroid img {
   aspect-ratio: 5/6;
   object-fit: cover;
   width: 100%;
 }
 
 .gallery-hint {
-  margin-top: 1.2rem;
+  margin-top: 1.6rem;
   font-size: 0.9rem;
   opacity: 0.7;
 }
@@ -188,7 +376,6 @@ img { max-width: 100%; display: block; }
 .rsvp {
   padding: 4rem 1.5rem;
   text-align: center;
-  background: var(--color-bg-alt);
 }
 .rsvp-text { margin-bottom: 1.5rem; }
 
@@ -196,6 +383,7 @@ img { max-width: 100%; display: block; }
 .footer {
   padding: 3rem 1.5rem;
   text-align: center;
+  background: var(--color-bg-alt);
 }
 .footer-names {
   font-family: var(--font-display);
@@ -204,7 +392,27 @@ img { max-width: 100%; display: block; }
 }
 .footer-names span { color: var(--color-accent); }
 
-@media (max-width: 480px) {
-  .hero-names { font-size: 3.4rem; }
+@media (max-width: 560px) {
   .section-title { font-size: 1.7rem; }
+  .ticket { flex-direction: column; }
+  .ticket-stub {
+    flex-direction: row;
+    border-left: none;
+    border-top: 2px dashed var(--color-accent);
+    border-radius: 0 0 14px 14px;
+    padding: 1rem 1.5rem;
+  }
+  .ticket-stub::before,
+  .ticket-stub::after {
+    top: -13px;
+    left: auto;
+  }
+  .ticket-stub::before { left: -12px; }
+  .ticket-stub::after { left: auto; right: -12px; }
+  .stub-code, .stub-vertical {
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+  .passport { flex-direction: column; align-items: center; text-align: center; }
+  .passport-fields p { text-align: left; }
 }
