@@ -61,14 +61,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const items = Array.from(track.children);
     if (!items.length) return;
 
+    // Scrolls the track horizontally only — never use scrollIntoView() here,
+    // since its `block` option can also drag the outer vertical feed back to this slide.
+    const scrollToItem = (index) => {
+      const delta = items[index].getBoundingClientRect().left - track.getBoundingClientRect().left;
+      track.scrollTo({ left: track.scrollLeft + delta, behavior: 'smooth' });
+    };
+
     items.forEach((_, i) => {
       const dot = document.createElement('button');
       dot.type = 'button';
       dot.className = 'dot' + (i === 0 ? ' active' : '');
       dot.setAttribute('aria-label', `Ảnh ${i + 1}`);
-      dot.addEventListener('click', () => {
-        items[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-      });
+      dot.addEventListener('click', () => scrollToItem(i));
       dotsWrap.appendChild(dot);
     });
     const dots = Array.from(dotsWrap.children);
@@ -95,13 +100,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let autoplayTimer = null;
     let userInteracting = false;
+    let isSlideVisible = true;
 
     const startAutoplay = () => {
       clearInterval(autoplayTimer);
       autoplayTimer = setInterval(() => {
-        if (userInteracting) return;
+        if (userInteracting || !isSlideVisible) return;
         const next = (currentIndex + 1) % items.length;
-        items[next].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        scrollToItem(next);
       }, 3800);
     };
 
@@ -113,6 +119,15 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => { userInteracting = false; }, 3000);
       }, { passive: true });
     });
+
+    // Pause autoplay whenever this carousel's slide has scrolled out of view,
+    // so it can't tug the page's vertical scroll back to itself later.
+    const parentSlide = root.closest('.slide');
+    if (parentSlide && 'IntersectionObserver' in window) {
+      new IntersectionObserver((entries) => {
+        entries.forEach((entry) => { isSlideVisible = entry.isIntersecting; });
+      }, { threshold: 0.6 }).observe(parentSlide);
+    }
 
     startAutoplay();
   }
