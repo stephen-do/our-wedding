@@ -19,8 +19,8 @@ Mở `index.html` và sửa:
 - Tên cô dâu/chú rể, ngày cưới ở phần `.hero` và `.footer`.
 - Ngày giờ đếm ngược: sửa `data-wedding-date="2027-02-14T09:00:00"` trong thẻ `#countdown`.
 - Lời ngỏ ở phần `.story`.
-- Giờ giấc, địa điểm lễ vu quy / tiệc cưới ở phần `.details`.
-- Bản đồ: vào Google Maps → tìm địa điểm → **Share > Embed a map** → copy link trong `src="..."` rồi thay vào thẻ `<iframe>`.
+- Giờ giấc, địa điểm lễ vu quy / nhà trai ở phần `.ticket-legs` trong slide đầu (`#hero`).
+- Link chỉ đường: thay `href` của các thẻ `.btn-direction` bằng link Google Maps của địa điểm thật (mở Google Maps → tìm địa điểm → Share → Copy link).
 - Ảnh: bỏ ảnh thật vào thư mục `images/`, sửa `src` trong phần `.gallery` (ví dụ `images/anh-1.jpg`).
 - RSVP: tạo một [Google Form](https://forms.google.com) đơn giản (họ tên, số lượng người tham dự, lời nhắn), lấy link rồi thay vào nút "RSVP ngay".
 

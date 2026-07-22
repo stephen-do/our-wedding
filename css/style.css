@@ -278,8 +278,6 @@ img { max-width: 100%; display: block; }
   margin-bottom: 0.8rem;
   gap: 0.8rem;
 }
-.ticket-fields > div:last-child { text-align: right; }
-
 .ticket-route {
   align-items: center;
   text-align: center;
@@ -292,6 +290,54 @@ img { max-width: 100%; display: block; }
   color: var(--color-teal);
   font-size: 1.1rem;
   transform: rotate(90deg);
+}
+
+.ticket-legs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 0.9rem;
+}
+
+.ticket-leg {
+  padding-bottom: 0.8rem;
+  border-bottom: 1px dashed var(--color-gold);
+}
+.ticket-leg:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.ticket-leg-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.3rem;
+}
+.ticket-leg-tag {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--color-teal-dark);
+  color: var(--color-gold-light);
+  padding: 0.15em 0.6em;
+  border-radius: 999px;
+}
+.ticket-leg-name {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-teal-dark);
+}
+.ticket-leg .btn-direction {
+  color: var(--color-teal-dark);
+}
+.ticket-leg .btn-direction:hover {
+  color: var(--color-gold);
 }
 
 .ticket-remark {
@@ -701,41 +747,6 @@ img { max-width: 100%; display: block; }
   transform: scale(1.35);
 }
 
-/* ===== DETAILS SLIDE ===== */
-.slide-details {
-  background: var(--color-bg);
-}
-
-.details-scroll {
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-  width: 100%;
-  max-width: 400px;
-}
-
-.mini-ticket {
-  background: var(--color-bg-alt);
-  border: 1px dashed var(--color-gold);
-  border-radius: 12px;
-  padding: 1.3rem;
-  text-align: left;
-}
-.mini-ticket-top {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  color: var(--color-navy);
-  margin-bottom: 0.7rem;
-}
-.mini-ticket-tag {
-  background: var(--color-navy);
-  color: var(--color-gold-light);
-  padding: 0.15em 0.6em;
-  border-radius: 999px;
-}
 .btn-direction {
   display: inline-block;
   margin-top: 0.9rem;
@@ -1051,7 +1062,6 @@ img { max-width: 100%; display: block; }
 
   .ticket,
   .passport,
-  .details-scroll,
   .finale-inner { max-width: 560px; }
 
   .countdown { max-width: 460px; }
