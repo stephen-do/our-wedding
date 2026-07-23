@@ -515,10 +515,6 @@ img { max-width: 100%; display: block; }
   margin-bottom: 0.3rem;
   line-height: 1.5;
 }
-.passport-motto {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
 .passport-title {
   margin: 0;
   font-size: 1.3rem;
