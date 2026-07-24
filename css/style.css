@@ -449,21 +449,29 @@ img { max-width: 100%; display: block; }
 .countdown-item {
   background: var(--color-card);
   border-radius: 12px;
-  padding: 0.9rem 0.4rem;
+  padding: 0.7rem 0.4rem 0.6rem;
   border-bottom: 3px solid var(--color-gold);
   box-shadow: 0 12px 28px rgba(14, 42, 77, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .countdown-item span {
   display: block;
   font-family: var(--font-mono);
-  font-size: 1.7rem;
+  font-size: 1.6rem;
+  line-height: 1.1;
   font-weight: 600;
   color: var(--color-navy);
+  margin-bottom: 0.3rem;
 }
 .countdown-item small {
+  display: block;
+  line-height: 1.1;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  font-size: 0.7rem;
+  font-size: 0.66rem;
 }
 .countdown-sub {
   font-family: var(--font-mono);
