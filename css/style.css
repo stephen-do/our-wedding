@@ -920,6 +920,66 @@ img { max-width: 100%; display: block; }
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
+/* ===== HEART BUTTON + FLOATING HEARTS ===== */
+@keyframes heart-pulse {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.28); }
+  60% { transform: scale(0.94); }
+  100% { transform: scale(1); }
+}
+.action-icon-heart.is-pulsing {
+  animation: heart-pulse 0.45s var(--ease);
+}
+
+.hearts-layer {
+  position: fixed;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.heart-particle {
+  position: absolute;
+  opacity: 0;
+  animation: heart-float cubic-bezier(0.15, 0.7, 0.3, 1) forwards;
+}
+.heart-particle svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
+}
+
+@keyframes heart-float {
+  0% {
+    transform: translate(0, 0) scale(0.3) rotate(var(--heart-rot-start, 0deg));
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  38% {
+    transform: translate(var(--heart-burst-x, 0px), var(--heart-burst-y, 0px)) scale(1.1) rotate(var(--heart-rot-start, 0deg));
+  }
+  100% {
+    transform: translate(var(--heart-drift-x, 0px), var(--heart-drift-y, -400px)) scale(0.85) rotate(var(--heart-rot-end, 0deg));
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .action-icon-heart.is-pulsing { animation: none; }
+  .heart-particle {
+    animation: heart-fade 1.1s ease-out forwards;
+  }
+}
+@keyframes heart-fade {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 /* ===== LIVE WISHES TICKER ===== */
 .wishes-feed {
   position: absolute;

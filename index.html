@@ -252,6 +252,13 @@
       </span>
       <span class="action-label">Lời chúc</span>
     </a>
+
+    <button class="action-btn" type="button" id="heart-btn" aria-label="Thả tim">
+      <span class="action-icon action-icon-heart" id="heart-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21s-6.72-4.35-9.43-8.49C.4 9.5 1.5 5.8 5 5c2.2-.5 4 .8 5 2.2C11 5.8 12.8 4.5 15 5c3.5.8 4.6 4.5 2.43 7.51C18.72 16.65 12 21 12 21z"/></svg>
+      </span>
+      <span class="action-label">Thả tim</span>
+    </button>
   </div>
 
   <!-- ===== LIVE WISHES TICKER (reads Google Sheet linked to the wishes form) ===== -->
@@ -279,6 +286,9 @@
   </div>
 
 </div>
+
+<!-- ===== FLOATING HEARTS (spawned by the "Thả tim" button) — sibling of .app-frame so they can fly past its edges ===== -->
+<div class="hearts-layer" id="hearts-layer" aria-hidden="true"></div>
 
 <script src="js/script.js"></script>
 </body>

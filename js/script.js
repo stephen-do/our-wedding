@@ -343,6 +343,72 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(refreshWishes, 15000);
   })();
 
+  // ===== FLOATING HEARTS ("Thả tim") =====
+  (function initHearts() {
+    const heartBtn = document.getElementById('heart-btn');
+    const heartIcon = document.getElementById('heart-icon');
+    const layer = document.getElementById('hearts-layer');
+    const frame = document.querySelector('.app-frame');
+    if (!heartBtn || !layer) return;
+
+    const HEART_PATH = 'M12 21s-6.72-4.35-9.43-8.49C.4 9.5 1.5 5.8 5 5c2.2-.5 4 .8 5 2.2C11 5.8 12.8 4.5 15 5c3.5.8 4.6 4.5 2.43 7.51C18.72 16.65 12 21 12 21z';
+    const COLORS = ['#ff6b81', '#ff8fa3', '#e6c76a', '#c9a227'];
+
+    function spawnHeart() {
+      // Burst outward from the center of the screen (the app frame), not the button —
+      // reads as a fireworks-style heart burst instead of a trail from one corner.
+      const originRect = (frame || document.body).getBoundingClientRect();
+      const startX = originRect.left + originRect.width / 2;
+      const startY = originRect.top + originRect.height / 2;
+
+      const size = 16 + Math.random() * 18;
+      // Spread across the upper half-circle (0 = right, 90° = straight up, 180° = left)
+      // so every heart drifts outward and up, never down.
+      const angle = Math.random() * Math.PI;
+      const spread = Math.min(window.innerWidth, window.innerHeight) * 0.5;
+      const burstDist = 60 + Math.random() * spread * 0.5;
+      const burstX = Math.round(Math.cos(angle) * burstDist);
+      const burstY = Math.round(-Math.sin(angle) * burstDist);
+      const driftX = Math.round(burstX * 1.5);
+      const driftY = Math.round(burstY * 1.6 - (160 + Math.random() * 220));
+      const rotStart = Math.round((Math.random() - 0.5) * 30);
+      const rotEnd = rotStart + Math.round((Math.random() - 0.5) * 90);
+      const duration = (1.9 + Math.random() * 1.3).toFixed(2);
+      const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+
+      const heart = document.createElement('span');
+      heart.className = 'heart-particle';
+      heart.style.left = `${startX - size / 2}px`;
+      heart.style.top = `${startY - size / 2}px`;
+      heart.style.width = `${size}px`;
+      heart.style.height = `${size}px`;
+      heart.style.color = color;
+      heart.style.animationDuration = `${duration}s`;
+      heart.style.setProperty('--heart-burst-x', `${burstX}px`);
+      heart.style.setProperty('--heart-burst-y', `${burstY}px`);
+      heart.style.setProperty('--heart-drift-x', `${driftX}px`);
+      heart.style.setProperty('--heart-drift-y', `${driftY}px`);
+      heart.style.setProperty('--heart-rot-start', `${rotStart}deg`);
+      heart.style.setProperty('--heart-rot-end', `${rotEnd}deg`);
+      heart.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="${HEART_PATH}"/></svg>`;
+
+      layer.appendChild(heart);
+      heart.addEventListener('animationend', () => heart.remove());
+    }
+
+    heartBtn.addEventListener('click', () => {
+      if (heartIcon) {
+        heartIcon.classList.remove('is-pulsing');
+        void heartIcon.offsetWidth;
+        heartIcon.classList.add('is-pulsing');
+      }
+      const count = 14 + Math.floor(Math.random() * 6);
+      for (let i = 0; i < count; i++) {
+        setTimeout(spawnHeart, i * 60);
+      }
+    });
+  })();
+
   // ===== MODALS =====
   document.querySelectorAll('[data-open-modal]').forEach((btn) => {
     btn.addEventListener('click', () => {
