@@ -437,12 +437,7 @@ img { max-width: 100%; display: block; }
   font-size: 1rem;
 }
 
-/* ===== COUNTDOWN SLIDE ===== */
-.slide-countdown {
-  gap: 1.6rem;
-  background: linear-gradient(180deg, var(--color-bg-alt), var(--color-bg));
-}
-
+/* ===== COUNTDOWN (embedded at the bottom of the finale slide) ===== */
 .countdown {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -807,6 +802,24 @@ img { max-width: 100%; display: block; }
 }
 .footer-names span { color: #fff; }
 .finale-footer p:last-child { font-size: 0.9rem; opacity: 0.85; }
+
+.finale-countdown {
+  margin-top: 2rem;
+  padding-top: 1.6rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+.finale-countdown-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-gold-light);
+}
+.finale-countdown .countdown-sub { color: #fff; opacity: 0.8; }
 
 /* ===== MUSIC TOGGLE ===== */
 .music-toggle {
