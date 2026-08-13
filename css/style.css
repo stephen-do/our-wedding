@@ -134,8 +134,6 @@ img { max-width: 100%; display: block; }
 .feed {
   height: 100%;
   overflow-y: auto;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
   overscroll-behavior-y: contain;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
@@ -143,20 +141,15 @@ img { max-width: 100%; display: block; }
 .feed::-webkit-scrollbar { display: none; }
 
 .slide {
-  height: 100%;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
   padding: calc(env(safe-area-inset-top) + 2.2rem) 1.4rem calc(env(safe-area-inset-bottom) + 2.2rem);
-  overflow-y: auto;
-  scrollbar-width: none;
   text-align: center;
 }
-.slide::-webkit-scrollbar { display: none; }
 
 /* ===== HERO SLIDE ===== */
 .slide-hero {
@@ -228,13 +221,6 @@ img { max-width: 100%; display: block; }
   font-weight: 600;
   font-size: 0.92rem;
   letter-spacing: 0.01em;
-}
-.ticket-logo {
-  height: 20px;
-  width: auto;
-  border-radius: 4px;
-  background: #fff;
-  padding: 2px 5px;
 }
 .ticket-class {
   font-weight: 600;
@@ -645,11 +631,9 @@ img { max-width: 100%; display: block; }
 
 /* ===== GALLERY SLIDE — full-bleed horizontal carousel ===== */
 .slide-gallery {
+  height: 100%;
   padding: 0;
   background: var(--color-navy-dark);
-  /* a nested mandatory-snap carousel can otherwise fight the outer feed for the
-     vertical swipe gesture on some mobile browsers — let this slide release easily */
-  scroll-snap-stop: normal;
 }
 
 .carousel-wrap {
@@ -710,7 +694,6 @@ img { max-width: 100%; display: block; }
   stroke: var(--color-navy-dark);
 }
 .carousel-prev { left: 10px; }
-.carousel-next { right: 10px; }
 
 .carousel-item {
   scroll-snap-align: start;

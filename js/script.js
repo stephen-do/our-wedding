@@ -179,9 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const prevBtn = root.querySelector('.carousel-prev');
-    const nextBtn = root.querySelector('.carousel-next');
     if (prevBtn) prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
-    if (nextBtn) nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
 
     // Pause autoplay whenever this carousel's slide has scrolled out of view,
     // so it can't tug the page's vertical scroll back to itself later.
