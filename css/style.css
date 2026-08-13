@@ -171,6 +171,16 @@ img { max-width: 100%; display: block; }
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
 }
 
+.hero-guest {
+  margin: -0.8rem 0 0;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+.hero-guest span { color: var(--color-gold-light); }
+
+
 .hero-hint {
   font-family: var(--font-mono);
   font-size: 0.72rem;

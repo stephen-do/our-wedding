@@ -7,6 +7,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const feed = document.getElementById('feed');
   if (feed) feed.scrollTop = 0;
 
+  // ===== GUEST PERSONALIZATION (?to=Ten+Khach in the link) =====
+  (function initGuestName() {
+    const guestName = new URLSearchParams(window.location.search).get('to');
+    if (!guestName || !guestName.trim()) return;
+    const name = guestName.trim().slice(0, 60);
+
+    const heroGuest = document.getElementById('hero-guest');
+    const heroGuestName = document.getElementById('hero-guest-name');
+    if (heroGuest && heroGuestName) {
+      heroGuestName.textContent = name;
+      heroGuest.hidden = false;
+    }
+
+    const ticketPassenger = document.getElementById('ticket-passenger');
+    if (ticketPassenger) ticketPassenger.textContent = name;
+
+    document.title = `Thiệp mời ${name} — Ngọc Tuyền & Lan Anh`;
+  })();
+
   // ===== BACKGROUND MUSIC =====
   (function initMusic() {
     const audio = document.getElementById('bg-music');
