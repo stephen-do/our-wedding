@@ -105,6 +105,12 @@ document.addEventListener('DOMContentLoaded', () => {
     var timer = setInterval(tick, 1000);
   }
 
+  // ===== FLY-IN TEXT STAGGER (assigns --fly-i per .reveal group so lines cascade in) =====
+  document.querySelectorAll('.reveal').forEach((root) => {
+    const group = root.matches('.fly-in-l, .fly-in-r') ? [root] : Array.from(root.querySelectorAll('.fly-in-l, .fly-in-r'));
+    group.forEach((el, i) => el.style.setProperty('--fly-i', i));
+  });
+
   // ===== SCROLL / SNAP REVEAL =====
   const revealEls = document.querySelectorAll('.reveal');
   if (revealEls.length && 'IntersectionObserver' in window) {

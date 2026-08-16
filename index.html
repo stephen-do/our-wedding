@@ -31,108 +31,43 @@
 
   <div class="feed" id="feed">
 
-    <!-- ===== SLIDE 1: STORY / PASSPORT ===== -->
-    <section class="slide slide-story" id="story">
-      <div class="passport reveal">
-        <div class="passport-header">
-          <span class="passport-country">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM<br>SOCIALIST REPUBLIC OF VIETNAM</span>
-          <h2 class="passport-title">HỘ CHIẾU HẠNH PHÚC <span>PASSPORT</span></h2>
-        </div>
-
-        <div class="passport-persons">
-          <div class="passport-person">
-            <div class="passport-photo">
-              <img src="images/gallery/photo-groom.jpg" alt="Chú rể - Đỗ Ngọc Tuyền">
-            </div>
-            <div class="passport-person-info">
-              <span class="p-label">Chú rể / Groom</span>
-              <span class="p-value">Đỗ Ngọc Tuyền</span>
-            </div>
-          </div>
-          <div class="passport-person">
-            <div class="passport-photo">
-              <img src="images/gallery/photo-03.jpg" alt="Cô dâu - Đỗ Thị Lan Anh">
-            </div>
-            <div class="passport-person-info">
-              <span class="p-label">Cô dâu / Bride</span>
-              <span class="p-value">Đỗ Thị Lan Anh</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="passport-fields">
-          <div class="passport-row">
-            <div class="full"><span class="p-label">Số hộ chiếu / Passport no.</span><span class="p-value">LOVE-200926</span></div>
-          </div>
-          <div class="passport-row">
-            <div><span class="p-label">Quốc tịch / Nationality</span><span class="p-value">Việt Nam</span></div>
-            <div><span class="p-label">Tình trạng / Status</span><span class="p-value">Vợ chồng</span></div>
-          </div>
-          <div class="passport-row">
-            <div><span class="p-label">Ngày cấp / Date of issue</span><span class="p-value">19–20/09/2026</span></div>
-            <div><span class="p-label">Có giá trị đến / Expiry</span><span class="p-value">Trọn đời</span></div>
-          </div>
-          <div class="passport-row">
-            <div class="full"><span class="p-label">Nơi cấp / Authority</span><span class="p-value">Cục Hạnh Phúc, Hà Nội</span></div>
-          </div>
-        </div>
-
-        <div class="passport-signature">
-          <span class="p-label">Chữ ký / Signature</span>
-          <span class="signature-script">Ngọc Tuyền &amp; Lan Anh</span>
-        </div>
-
-        <div class="passport-mrz">
-          <p>P&lt;VNMDO&lt;&lt;NGOC&lt;TUYEN&lt;LAN&lt;ANH&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</p>
-          <p>LOVE200926&lt;4VNM&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;2</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== SLIDE 2: HERO / BOARDING PASS ===== -->
+    <!-- ===== SLIDE 1: HERO / BOARDING PASS ===== -->
     <section class="slide slide-hero" id="hero">
-      <p class="hero-kicker reveal">You are invited to board</p>
-      <p class="hero-guest reveal" id="hero-guest" hidden>Kính mời <span id="hero-guest-name"></span></p>
+      <p class="hero-kicker reveal fly-in-l">You are invited to board</p>
+      <p class="hero-guest reveal fly-in-r" id="hero-guest" hidden>Kính mời <span id="hero-guest-name"></span></p>
 
       <div class="ticket reveal">
         <div class="ticket-main">
           <div class="ticket-top">
-            <span class="ticket-airline">Wedding Airlines</span>
-            <span class="ticket-class">Boarding Pass</span>
+            <span class="ticket-airline fly-in-l">Wedding Airlines</span>
+            <span class="ticket-class fly-in-r">Boarding Pass</span>
           </div>
 
           <div class="ticket-body">
-            <p class="ticket-label">Hãng chuyên chở / Carrier</p>
-            <p class="ticket-value ticket-carrier">WEDDING AIRLINES</p>
-
-            <p class="ticket-label">Họ và tên / Name</p>
-            <p class="ticket-passenger" id="ticket-passenger">Ngọc Tuyền <span>&amp;</span> Lan Anh</p>
-
-            <div class="ticket-row ticket-route">
-              <div>
-                <p class="ticket-label">Nơi đi / From</p>
-                <p class="ticket-value">Độc Thân</p>
+            <div class="ticket-grid">
+              <div class="ticket-field">
+                <p class="ticket-label fly-in-l">Họ và tên / Name</p>
+                <p class="ticket-passenger fly-in-l" id="ticket-passenger">Ngọc Tuyền <span>&amp;</span> Lan Anh</p>
               </div>
-              <div class="ticket-plane">✈</div>
-              <div>
-                <p class="ticket-label">Nơi đến / To</p>
-                <p class="ticket-value">Hạnh Phúc</p>
+              <div class="ticket-field">
+                <p class="ticket-label fly-in-r">Chuyến bay / Flight</p>
+                <p class="ticket-value fly-in-r">Trăm năm hạnh phúc</p>
               </div>
             </div>
 
-            <div class="ticket-legs">
-              <div class="ticket-leg">
-                <div class="ticket-leg-top">
-                  <span class="ticket-leg-tag">Flight</span>
-                  <span class="ticket-leg-name">Nhà Trai</span>
-                </div>
-                <p class="ticket-value">10:00 — Chủ Nhật, 20/09/2026</p>
-                <p class="ticket-label">Đường Đồng Kênh, Thôn Đại Vỹ, Xã Thư Lâm, Hà Nội</p>
-                <a class="btn-direction" href="https://www.google.com/maps?q=21.140598,105.907656&z=17" target="_blank" rel="noopener">Chỉ đường trên Google Maps →</a>
-              </div>
+            <div class="ticket-field ticket-field-full">
+              <p class="ticket-label fly-in-l">Giờ khởi hành / Departing on</p>
+              <p class="ticket-value fly-in-l">5PM - 19/09/26 &amp; 10AM - 20/09/26</p>
             </div>
 
-            <p class="ticket-remark">Cửa hạnh phúc đóng trước giờ khởi hành 15 phút — đừng để tình yêu phải chờ.</p>
+            <div class="ticket-field ticket-field-full">
+              <p class="ticket-label fly-in-r">Destination / Điểm đến</p>
+              <p class="ticket-value fly-in-r">Đường Đồng Kênh, Thôn Đại Vỹ, Xã Thư Lâm, Hà Nội</p>
+            </div>
+
+            <a class="btn-direction" href="https://www.google.com/maps?q=21.140598,105.907656&z=17" target="_blank" rel="noopener">Chỉ đường trên Google Maps →</a>
+
+            <p class="ticket-remark fly-in-r">Cửa hạnh phúc đóng trước giờ khởi hành 15 phút — đừng để tình yêu phải chờ.</p>
           </div>
 
           <div class="barcode"></div>
@@ -153,6 +88,64 @@
       </div>
 
       <span class="hero-hint reveal">Vuốt lên để xem hành trình ↑</span>
+    </section>
+
+    <!-- ===== SLIDE 2: STORY / PASSPORT ===== -->
+    <section class="slide slide-story" id="story">
+      <div class="passport reveal">
+        <div class="passport-header">
+          <span class="passport-country fly-in-l">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM<br>SOCIALIST REPUBLIC OF VIETNAM</span>
+          <h2 class="passport-title fly-in-r">HỘ CHIẾU HẠNH PHÚC <span>PASSPORT</span></h2>
+        </div>
+
+        <div class="passport-persons">
+          <div class="passport-person">
+            <div class="passport-photo">
+              <img src="images/gallery/photo-groom.jpg" alt="Chú rể - Đỗ Ngọc Tuyền">
+            </div>
+            <div class="passport-person-info">
+              <span class="p-label fly-in-l">Chú rể / Groom</span>
+              <span class="p-value fly-in-l">Đỗ Ngọc Tuyền</span>
+            </div>
+          </div>
+          <div class="passport-person">
+            <div class="passport-photo">
+              <img src="images/gallery/photo-03.jpg" alt="Cô dâu - Đỗ Thị Lan Anh">
+            </div>
+            <div class="passport-person-info">
+              <span class="p-label fly-in-r">Cô dâu / Bride</span>
+              <span class="p-value fly-in-r">Đỗ Thị Lan Anh</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="passport-fields">
+          <div class="passport-row">
+            <div class="full"><span class="p-label fly-in-l">Số hộ chiếu / Passport no.</span><span class="p-value fly-in-l">LOVE-200926</span></div>
+          </div>
+          <div class="passport-row">
+            <div><span class="p-label fly-in-l">Quốc tịch / Nationality</span><span class="p-value fly-in-l">Việt Nam</span></div>
+            <div><span class="p-label fly-in-r">Tình trạng / Status</span><span class="p-value fly-in-r">Vợ chồng</span></div>
+          </div>
+          <div class="passport-row">
+            <div><span class="p-label fly-in-l">Ngày cấp / Date of issue</span><span class="p-value fly-in-l">19–20/09/2026</span></div>
+            <div><span class="p-label fly-in-r">Có giá trị đến / Expiry</span><span class="p-value fly-in-r">Trọn đời</span></div>
+          </div>
+          <div class="passport-row">
+            <div class="full"><span class="p-label fly-in-l">Nơi cấp / Authority</span><span class="p-value fly-in-l">Cục Hạnh Phúc, Hà Nội</span></div>
+          </div>
+        </div>
+
+        <div class="passport-signature">
+          <span class="p-label fly-in-l">Chữ ký / Signature</span>
+          <span class="signature-script fly-in-r">Ngọc Tuyền &amp; Lan Anh</span>
+        </div>
+
+        <div class="passport-mrz">
+          <p>P&lt;VNMDO&lt;&lt;NGOC&lt;TUYEN&lt;LAN&lt;ANH&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</p>
+          <p>LOVE200926&lt;4VNM&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;2</p>
+        </div>
+      </div>
     </section>
 
     <!-- ===== SLIDE 3: GALLERY — HORIZONTAL AUTO-SLIDING CAROUSEL ===== -->
@@ -191,25 +184,25 @@
     <!-- ===== SLIDE 4: FINALE — RSVP + THANK YOU ===== -->
     <section class="slide slide-finale" id="finale">
       <div class="finale-inner reveal">
-        <h2 class="section-title">Xác nhận chỗ ngồi</h2>
-        <p class="rsvp-text">Vui lòng xác nhận tham dự trước ngày 05/09/2026 để chúng tôi sắp xếp chỗ ngồi cho bạn.</p>
+        <h2 class="section-title fly-in-l">Xác nhận chỗ ngồi</h2>
+        <p class="rsvp-text fly-in-r">Vui lòng xác nhận tham dự trước ngày 05/09/2026 để chúng tôi sắp xếp chỗ ngồi cho bạn.</p>
         <!-- Thay link bên dưới bằng link Google Form RSVP của bạn -->
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdTzSd4-Ls5iegujWn3EqcvgDxozkOebdAN6RnkEUJi90TbfA/viewform?usp=publish-editor" target="_blank" rel="noopener" class="btn btn-light">Confirm Seat →</a>
 
         <div class="finale-footer">
-          <p class="footer-names">Ngọc Tuyền <span>&amp;</span> Lan Anh</p>
-          <p>Cảm ơn bạn đã đồng hành cùng chuyến bay của chúng tôi 💛</p>
+          <p class="footer-names fly-in-r">Ngọc Tuyền <span>&amp;</span> Lan Anh</p>
+          <p class="fly-in-l">Cảm ơn bạn đã đồng hành cùng chuyến bay của chúng tôi 💛</p>
         </div>
 
         <div class="finale-countdown">
-          <p class="finale-countdown-label">Đếm ngược giờ khởi hành</p>
+          <p class="finale-countdown-label fly-in-r">Đếm ngược giờ khởi hành</p>
           <div id="countdown-clock" class="countdown" data-wedding-date="2026-09-19T08:00:00">
             <div class="countdown-item"><span id="cd-days">00</span><small>Ngày</small></div>
             <div class="countdown-item"><span id="cd-hours">00</span><small>Giờ</small></div>
             <div class="countdown-item"><span id="cd-minutes">00</span><small>Phút</small></div>
             <div class="countdown-item"><span id="cd-seconds">00</span><small>Giây</small></div>
           </div>
-          <p class="countdown-sub">19 – 20 · 09 · 2026</p>
+          <p class="countdown-sub fly-in-l">19 – 20 · 09 · 2026</p>
         </div>
       </div>
     </section>
