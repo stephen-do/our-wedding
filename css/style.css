@@ -27,7 +27,7 @@
 
 * { box-sizing: border-box; }
 
-html, body { height: 100%; }
+html, body { height: 100%; overflow-x: hidden; }
 
 body {
   margin: 0;
@@ -134,10 +134,12 @@ img { max-width: 100%; display: block; }
 .feed {
   height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
   overscroll-behavior-y: contain;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   scroll-snap-type: y mandatory;
+  touch-action: pan-y;
 }
 .feed::-webkit-scrollbar { display: none; }
 
