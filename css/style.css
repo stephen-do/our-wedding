@@ -140,6 +140,7 @@ img { max-width: 100%; display: block; }
   scrollbar-width: none;
   scroll-snap-type: y mandatory;
   touch-action: pan-y;
+  contain: layout;
 }
 .feed::-webkit-scrollbar { display: none; }
 
