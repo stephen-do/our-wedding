@@ -155,36 +155,50 @@
       </div>
     </section>
 
-    <!-- ===== SLIDE 3: GALLERY — HORIZONTAL AUTO-SLIDING CAROUSEL ===== -->
+    <!-- ===== SLIDE 3: GALLERY — SINGLE COVER PHOTO + "XEM THÊM" ===== -->
     <section class="slide slide-gallery" id="gallery">
-      <div class="carousel-wrap reveal" data-carousel>
-        <div class="carousel">
-          <figure class="carousel-item">
-            <img src="images/gallery/photo-01.jpg" alt="Ảnh cưới 1" loading="lazy">
-            <figcaption><span>STOP 01</span>Hoàng hôn nơi biển cả</figcaption>
-          </figure>
-          <figure class="carousel-item">
-            <img src="images/gallery/photo-02.jpg" alt="Ảnh cưới 2" loading="lazy">
-            <figcaption><span>STOP 02</span>Sánh bước bên nhau</figcaption>
-          </figure>
-          <figure class="carousel-item">
-            <img src="images/gallery/photo-04.jpg" alt="Ảnh cưới 4" loading="lazy">
-            <figcaption><span>STOP 03</span>Ánh mắt trao nhau</figcaption>
-          </figure>
-          <figure class="carousel-item">
-            <img src="images/gallery/photo-03.jpg" alt="Ảnh cưới 3" loading="lazy">
-            <figcaption><span>STOP 04</span>Khoảnh khắc lặng yên</figcaption>
-          </figure>
-          <figure class="carousel-item">
-            <img src="images/gallery/photo-05.jpg" alt="Ảnh cưới 5" loading="lazy">
-            <figcaption><span>STOP 05</span>Một hành trình, một lối về</figcaption>
-          </figure>
+      <div class="gallery-cover reveal">
+        <img src="images/gallery/photo-01.jpg" alt="Ảnh cưới" loading="lazy">
+        <div class="gallery-cover-caption">
+          <span>STOP 01</span>Hoàng hôn nơi biển cả
         </div>
-        <div class="carousel-dots"></div>
+        <button class="btn btn-light gallery-more-btn" type="button" data-open-modal="album-modal">Xem thêm ảnh →</button>
+      </div>
+    </section>
 
-        <button class="carousel-nav carousel-prev" type="button" aria-label="Ảnh trước">
-          <svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>
-        </button>
+    <!-- ===== SLIDE: WEDDING CALENDAR ===== -->
+    <section class="slide slide-calendar" id="calendar">
+      <div class="calendar-card reveal">
+        <span class="calendar-kicker fly-in-l">Save the date</span>
+        <h2 class="calendar-title fly-in-r">Lịch cưới chúng mình</h2>
+
+        <div class="calendar-month fly-in-l">
+          <p class="calendar-month-label">Tháng 09 · 2026</p>
+          <div class="calendar-grid">
+            <span class="calendar-dow">CN</span><span class="calendar-dow">T2</span><span class="calendar-dow">T3</span><span class="calendar-dow">T4</span><span class="calendar-dow">T5</span><span class="calendar-dow">T6</span><span class="calendar-dow">T7</span>
+
+            <span class="calendar-day is-empty"></span><span class="calendar-day is-empty"></span>
+            <span class="calendar-day">1</span><span class="calendar-day">2</span><span class="calendar-day">3</span><span class="calendar-day">4</span><span class="calendar-day">5</span>
+            <span class="calendar-day">6</span><span class="calendar-day">7</span><span class="calendar-day">8</span><span class="calendar-day">9</span><span class="calendar-day">10</span><span class="calendar-day">11</span><span class="calendar-day">12</span>
+            <span class="calendar-day">13</span><span class="calendar-day">14</span><span class="calendar-day">15</span><span class="calendar-day">16</span><span class="calendar-day">17</span><span class="calendar-day">18</span>
+            <span class="calendar-day is-wedding">19<svg class="calendar-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-6.72-4.35-9.43-8.49C.4 9.5 1.5 5.8 5 5c2.2-.5 4 .8 5 2.2C11 5.8 12.8 4.5 15 5c3.5.8 4.6 4.5 2.43 7.51C18.72 16.65 12 21 12 21z"/></svg></span>
+            <span class="calendar-day is-wedding">20<svg class="calendar-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-6.72-4.35-9.43-8.49C.4 9.5 1.5 5.8 5 5c2.2-.5 4 .8 5 2.2C11 5.8 12.8 4.5 15 5c3.5.8 4.6 4.5 2.43 7.51C18.72 16.65 12 21 12 21z"/></svg></span>
+            <span class="calendar-day">21</span><span class="calendar-day">22</span><span class="calendar-day">23</span><span class="calendar-day">24</span><span class="calendar-day">25</span>
+            <span class="calendar-day">26</span><span class="calendar-day">27</span><span class="calendar-day">28</span><span class="calendar-day">29</span><span class="calendar-day">30</span>
+          </div>
+        </div>
+
+        <p class="calendar-caption fly-in-r">19 – 20 · 09 · 2026 — Ngày chúng mình nên duyên</p>
+
+        <div class="calendar-countdown">
+          <p class="calendar-countdown-label fly-in-r">Đếm ngược giờ khởi hành</p>
+          <div id="countdown-clock" class="countdown" data-wedding-date="2026-09-19T08:00:00">
+            <div class="countdown-item"><span id="cd-days">00</span><small>Ngày</small></div>
+            <div class="countdown-item"><span id="cd-hours">00</span><small>Giờ</small></div>
+            <div class="countdown-item"><span id="cd-minutes">00</span><small>Phút</small></div>
+            <div class="countdown-item"><span id="cd-seconds">00</span><small>Giây</small></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -196,21 +210,24 @@
         <!-- Thay link bên dưới bằng link Google Form RSVP của bạn -->
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdTzSd4-Ls5iegujWn3EqcvgDxozkOebdAN6RnkEUJi90TbfA/viewform?usp=publish-editor" target="_blank" rel="noopener" class="btn btn-light">Confirm Seat →</a>
 
-        <div class="finale-footer">
-          <p class="footer-names fly-in-r">Ngọc Tuyền <span>&amp;</span> Lan Anh</p>
-          <p class="fly-in-l">Cảm ơn bạn đã đồng hành cùng chuyến bay của chúng tôi 💛</p>
+        <div class="finale-gift">
+          <p class="finale-gift-label fly-in-l">Mừng cưới</p>
+          <button type="button" class="btn btn-light" data-open-modal="gift-modal">Tặng quà →</button>
         </div>
 
-        <div class="finale-countdown">
-          <p class="finale-countdown-label fly-in-r">Đếm ngược giờ khởi hành</p>
-          <div id="countdown-clock" class="countdown" data-wedding-date="2026-09-19T08:00:00">
-            <div class="countdown-item"><span id="cd-days">00</span><small>Ngày</small></div>
-            <div class="countdown-item"><span id="cd-hours">00</span><small>Giờ</small></div>
-            <div class="countdown-item"><span id="cd-minutes">00</span><small>Phút</small></div>
-            <div class="countdown-item"><span id="cd-seconds">00</span><small>Giây</small></div>
-          </div>
-          <p class="countdown-sub fly-in-l">19 – 20 · 09 · 2026</p>
+        <div class="finale-footer">
+          <p class="footer-names fly-in-r">Ngọc Tuyền <span>&amp;</span> Lan Anh</p>
         </div>
+      </div>
+    </section>
+
+    <!-- ===== SLIDE 5: THANK YOU ===== -->
+    <section class="slide slide-thanks" id="thanks">
+      <div class="thanks-inner reveal">
+        <span class="thanks-kicker fly-in-l">Thank you</span>
+        <h2 class="thanks-title fly-in-r">Trân trọng cảm ơn</h2>
+        <p class="thanks-text fly-in-l">Sự hiện diện của quý vị là niềm vinh hạnh cho gia đình chúng tôi.</p>
+        <p class="thanks-names fly-in-r">Ngọc Tuyền <span>&amp;</span> Lan Anh</p>
       </div>
     </section>
 
@@ -251,6 +268,37 @@
 
   <!-- ===== LIVE WISHES TICKER (reads Google Sheet linked to the wishes form) ===== -->
   <div class="wishes-feed" id="wishes-feed" aria-live="polite"></div>
+
+  <!-- ===== ALBUM VIEWER — full-screen photo + thumbnail strip ===== -->
+  <div class="modal album-viewer" id="album-modal">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="album-viewer-card">
+      <button class="modal-close modal-close-light" type="button" data-close-modal aria-label="Đóng">&times;</button>
+
+      <figure class="album-viewer-main">
+        <img src="images/gallery/photo-01.jpg" alt="Ảnh cưới" id="album-viewer-image" loading="lazy">
+        <figcaption id="album-viewer-caption"><span>STOP 01</span>Hoàng hôn nơi biển cả</figcaption>
+      </figure>
+
+      <div class="album-thumbs" id="album-thumbs" role="tablist">
+        <button type="button" class="album-thumb is-active" role="tab" aria-selected="true" data-src="images/gallery/photo-01.jpg" data-caption="Hoàng hôn nơi biển cả" data-stop="STOP 01">
+          <img src="images/gallery/photo-01.jpg" alt="" loading="lazy">
+        </button>
+        <button type="button" class="album-thumb" role="tab" aria-selected="false" data-src="images/gallery/photo-02.jpg" data-caption="Sánh bước bên nhau" data-stop="STOP 02">
+          <img src="images/gallery/photo-02.jpg" alt="" loading="lazy">
+        </button>
+        <button type="button" class="album-thumb" role="tab" aria-selected="false" data-src="images/gallery/photo-04.jpg" data-caption="Ánh mắt trao nhau" data-stop="STOP 03">
+          <img src="images/gallery/photo-04.jpg" alt="" loading="lazy">
+        </button>
+        <button type="button" class="album-thumb" role="tab" aria-selected="false" data-src="images/gallery/photo-03.jpg" data-caption="Khoảnh khắc lặng yên" data-stop="STOP 04">
+          <img src="images/gallery/photo-03.jpg" alt="" loading="lazy">
+        </button>
+        <button type="button" class="album-thumb" role="tab" aria-selected="false" data-src="images/gallery/photo-05.jpg" data-caption="Một hành trình, một lối về" data-stop="STOP 05">
+          <img src="images/gallery/photo-05.jpg" alt="" loading="lazy">
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- ===== GIFT / QR MODAL ===== -->
   <div class="modal" id="gift-modal">

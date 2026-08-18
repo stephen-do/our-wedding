@@ -128,97 +128,26 @@ document.addEventListener('DOMContentLoaded', () => {
     revealEls.forEach((el) => el.classList.add('is-visible'));
   }
 
-  // ===== HORIZONTAL AUTO-SLIDING CAROUSELS =====
-  function initCarousel(root) {
-    const track = root.querySelector('.carousel');
-    const dotsWrap = root.querySelector('.carousel-dots');
-    if (!track || !dotsWrap) return;
+  // ===== ALBUM VIEWER (full-screen photo + thumbnail strip) =====
+  (function initAlbumViewer() {
+    const mainImg = document.getElementById('album-viewer-image');
+    const caption = document.getElementById('album-viewer-caption');
+    const thumbs = Array.from(document.querySelectorAll('.album-thumb'));
+    if (!mainImg || !caption || !thumbs.length) return;
 
-    const items = Array.from(track.children);
-    if (!items.length) return;
+    thumbs.forEach((thumb) => {
+      thumb.addEventListener('click', () => {
+        mainImg.src = thumb.dataset.src;
+        caption.innerHTML = `<span>${thumb.dataset.stop}</span>${thumb.dataset.caption}`;
 
-    // Scrolls the track horizontally only — never use scrollIntoView() here,
-    // since its `block` option can also drag the outer vertical feed back to this slide.
-    const scrollToItem = (index) => {
-      const delta = items[index].getBoundingClientRect().left - track.getBoundingClientRect().left;
-      track.scrollTo({ left: track.scrollLeft + delta, behavior: 'smooth' });
-    };
-
-    items.forEach((_, i) => {
-      const dot = document.createElement('button');
-      dot.type = 'button';
-      dot.className = 'dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('aria-label', `Ảnh ${i + 1}`);
-      dot.addEventListener('click', () => scrollToItem(i));
-      dotsWrap.appendChild(dot);
-    });
-    const dots = Array.from(dotsWrap.children);
-
-    let currentIndex = 0;
-
-    const closestIndex = () => {
-      const trackRect = track.getBoundingClientRect();
-      const center = trackRect.left + trackRect.width / 2;
-      let closest = 0;
-      let min = Infinity;
-      items.forEach((item, i) => {
-        const r = item.getBoundingClientRect();
-        const dist = Math.abs((r.left + r.width / 2) - center);
-        if (dist < min) { min = dist; closest = i; }
+        thumbs.forEach((t) => {
+          t.classList.toggle('is-active', t === thumb);
+          t.setAttribute('aria-selected', String(t === thumb));
+        });
+        thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
       });
-      return closest;
-    };
-
-    track.addEventListener('scroll', () => {
-      currentIndex = closestIndex();
-      dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
-    }, { passive: true });
-
-    let autoplayTimer = null;
-    let userInteracting = false;
-    let isSlideVisible = true;
-
-    const startAutoplay = () => {
-      clearInterval(autoplayTimer);
-      autoplayTimer = setInterval(() => {
-        if (userInteracting || !isSlideVisible) return;
-        const next = (currentIndex + 1) % items.length;
-        scrollToItem(next);
-      }, 3800);
-    };
-
-    ['pointerdown', 'touchstart'].forEach((evt) => {
-      track.addEventListener(evt, () => { userInteracting = true; }, { passive: true });
     });
-    ['pointerup', 'touchend'].forEach((evt) => {
-      track.addEventListener(evt, () => {
-        setTimeout(() => { userInteracting = false; }, 3000);
-      }, { passive: true });
-    });
-
-    const goTo = (index) => {
-      currentIndex = (index + items.length) % items.length;
-      userInteracting = true;
-      scrollToItem(currentIndex);
-      setTimeout(() => { userInteracting = false; }, 3000);
-    };
-
-    const prevBtn = root.querySelector('.carousel-prev');
-    if (prevBtn) prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
-
-    // Pause autoplay whenever this carousel's slide has scrolled out of view,
-    // so it can't tug the page's vertical scroll back to itself later.
-    const parentSlide = root.closest('.slide');
-    if (parentSlide && 'IntersectionObserver' in window) {
-      new IntersectionObserver((entries) => {
-        entries.forEach((entry) => { isSlideVisible = entry.isIntersecting; });
-      }, { threshold: 0.6 }).observe(parentSlide);
-    }
-
-    startAutoplay();
-  }
-
-  document.querySelectorAll('[data-carousel]').forEach(initCarousel);
+  })();
 
   // ===== GIFT QR — bride / groom tabs =====
   const qrImage = document.getElementById('qr-image');
