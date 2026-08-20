@@ -50,7 +50,7 @@ body::before {
   inset: -20px;
   background-image:
     linear-gradient(rgba(8, 20, 38, 0.78), rgba(8, 20, 38, 0.92)),
-    url('../images/gallery/photo-01.jpg');
+    url('../images/gallery/photo-35.jpg');
   background-size: cover;
   background-position: center;
   filter: blur(22px) saturate(1.1);
@@ -100,23 +100,6 @@ img { max-width: 100%; display: block; }
   animation: btn-halo 2.6s ease-in-out infinite;
   pointer-events: none;
 }
-/* foil shine sweeping across the pill */
-.btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  border-radius: inherit;
-  clip-path: inset(0 round 999px);
-  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.65) 48%, transparent 66%);
-  transform: translateX(-140%);
-  animation: btn-shine 3.4s ease-in-out infinite;
-  pointer-events: none;
-}
-.btn > * {
-  position: relative;
-  z-index: 2;
-}
 .btn-icon {
   display: inline-flex;
   width: 17px;
@@ -138,10 +121,6 @@ img { max-width: 100%; display: block; }
 @keyframes btn-halo {
   0%, 100% { opacity: 0; transform: scale(0.92); }
   50% { opacity: 1; transform: scale(1.06); }
-}
-@keyframes btn-shine {
-  0%, 42% { transform: translateX(-140%); }
-  72%, 100% { transform: translateX(140%); }
 }
 @keyframes btn-arrow-nudge {
   0%, 100% { transform: translateX(0); }
@@ -171,7 +150,6 @@ img { max-width: 100%; display: block; }
   transform: translateY(-1px) scale(0.97);
   box-shadow: 0 8px 18px rgba(201, 162, 39, 0.32);
 }
-.finale-gift .btn::before,
 .finale-gift .btn::after {
   animation-delay: 1.4s;
 }
@@ -189,7 +167,6 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 18px 36px rgba(201, 162, 39, 0.45);
 }
 @media (prefers-reduced-motion: reduce) {
-  .btn::before,
   .btn::after,
   .btn-arrow,
   .btn:hover .btn-icon {
@@ -265,9 +242,9 @@ img { max-width: 100%; display: block; }
   color: #fff;
   background-image:
     linear-gradient(180deg, rgba(8, 20, 38, 0.3) 0%, rgba(8, 20, 38, 0.55) 55%, rgba(8, 20, 38, 0.88) 100%),
-    url('../images/gallery/photo-01.jpg');
+    url('../images/gallery/photo-35.jpg');
   background-size: cover;
-  background-position: center 30%;
+  background-position: center 22%;
 }
 
 .hero-kicker {
@@ -310,26 +287,6 @@ img { max-width: 100%; display: block; }
   border-radius: 14px;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
   position: relative;
-  isolation: isolate;
-}
-/* glossy light sweeping across the whole boarding pass */
-.ticket::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-  clip-path: inset(0 round 14px);
-  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.55) 50%, transparent 65%);
-  transform: translateX(-160%);
-  animation: ticket-shine 5s ease-in-out infinite;
-  pointer-events: none;
-}
-@keyframes ticket-shine {
-  0%, 46% { transform: translateX(-160%); }
-  76%, 100% { transform: translateX(160%); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .ticket::before { animation: none; }
 }
 
 .ticket-main {
@@ -622,9 +579,9 @@ img { max-width: 100%; display: block; }
   color: #fff;
   background-image:
     linear-gradient(180deg, rgba(13, 41, 33, 0.25) 0%, rgba(13, 41, 33, 0.65) 55%, rgba(9, 27, 22, 0.92) 100%),
-    url('../images/gallery/photo-03.jpg');
+    url('../images/gallery/photo-31.jpg');
   background-size: cover;
-  background-position: center 20%;
+  background-position: center 38%;
 }
 
 .passport {
@@ -943,9 +900,9 @@ img { max-width: 100%; display: block; }
   color: #fff;
   background-image:
     linear-gradient(180deg, rgba(8, 20, 38, 0.5) 0%, rgba(8, 20, 38, 0.72) 55%, rgba(8, 20, 38, 0.92) 100%),
-    url('../images/gallery/photo-04.jpg');
+    url('../images/gallery/photo-20.jpg');
   background-size: cover;
-  background-position: center 35%;
+  background-position: center 32%;
 }
 .calendar-card { max-width: 380px; width: 100%; }
 
@@ -1056,9 +1013,9 @@ img { max-width: 100%; display: block; }
   color: #fff;
   background-image:
     linear-gradient(180deg, rgba(13, 41, 33, 0.55) 0%, rgba(13, 41, 33, 0.8) 60%, rgba(9, 27, 22, 0.95) 100%),
-    url('../images/gallery/photo-05.jpg');
+    url('../images/gallery/photo-12.jpg');
   background-size: cover;
-  background-position: center 20%;
+  background-position: center 25%;
 }
 .finale-inner {
   max-width: 380px;
@@ -1105,7 +1062,7 @@ img { max-width: 100%; display: block; }
   color: #fff;
   background-image:
     linear-gradient(180deg, rgba(8, 20, 38, 0.55) 0%, rgba(8, 20, 38, 0.8) 60%, rgba(8, 20, 38, 0.95) 100%),
-    url('../images/gallery/photo-02.jpg');
+    url('../images/gallery/photo-06.jpg');
   background-size: cover;
   background-position: center 30%;
 }

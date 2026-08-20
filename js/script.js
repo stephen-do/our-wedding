@@ -128,25 +128,109 @@ document.addEventListener('DOMContentLoaded', () => {
     revealEls.forEach((el) => el.classList.add('is-visible'));
   }
 
+  // ===== AUTO SCROLL (slow ambient scroll once past the hero slide) =====
+  (function initAutoScroll() {
+    const hero = document.getElementById('hero');
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!feed || !hero || prefersReduced) return;
+
+    const SPEED = 20; // px per second — slow, ambient pace
+    const RESUME_DELAY = 2500; // ms of inactivity before auto-scroll resumes
+
+    let lastTime = null;
+    let paused = false;
+    let resumeTimer = null;
+    // scrollTop only stores whole pixels, so sub-pixel per-frame deltas
+    // (20px/s at 60fps is ~0.3px/frame) would round away to nothing if we
+    // accumulated directly on feed.scrollTop — track our own float instead.
+    let virtualTop = feed.scrollTop;
+
+    const isOutsideHero = () => feed.scrollTop >= hero.offsetHeight - 4;
+    const isAtBottom = () => feed.scrollTop + feed.clientHeight >= feed.scrollHeight - 2;
+    const isModalOpen = () => document.querySelector('.modal.is-open');
+
+    const step = (time) => {
+      if (lastTime === null) lastTime = time;
+      const dt = (time - lastTime) / 1000;
+      lastTime = time;
+
+      // something other than us moved the scroll position (a manual drag,
+      // a thumb-click's scrollIntoView, tapping a nav link) — resync instead
+      // of fighting it or snapping back to our stale position next frame
+      if (Math.abs(feed.scrollTop - virtualTop) > 1) {
+        virtualTop = feed.scrollTop;
+      } else if (!paused && isOutsideHero() && !isAtBottom() && !isModalOpen()) {
+        virtualTop += SPEED * dt;
+        feed.scrollTop = virtualTop;
+      }
+      requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+
+    const pause = () => {
+      paused = true;
+      lastTime = null;
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => { paused = false; }, RESUME_DELAY);
+    };
+    ['wheel', 'touchstart', 'touchmove', 'pointerdown'].forEach((evt) => {
+      feed.addEventListener(evt, pause, { passive: true });
+    });
+  })();
+
   // ===== ALBUM VIEWER (full-screen photo + thumbnail strip) =====
   (function initAlbumViewer() {
     const mainImg = document.getElementById('album-viewer-image');
     const caption = document.getElementById('album-viewer-caption');
     const thumbs = Array.from(document.querySelectorAll('.album-thumb'));
+    const modal = document.getElementById('album-modal');
+    const stage = document.querySelector('.album-viewer-main');
     if (!mainImg || !caption || !thumbs.length) return;
 
-    thumbs.forEach((thumb) => {
-      thumb.addEventListener('click', () => {
-        mainImg.src = thumb.dataset.src;
-        caption.innerHTML = `<span>${thumb.dataset.stop}</span>${thumb.dataset.caption}`;
+    let activeIndex = Math.max(0, thumbs.findIndex((t) => t.classList.contains('is-active')));
 
-        thumbs.forEach((t) => {
-          t.classList.toggle('is-active', t === thumb);
-          t.setAttribute('aria-selected', String(t === thumb));
-        });
-        thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    const selectThumb = (index) => {
+      activeIndex = (index + thumbs.length) % thumbs.length;
+      const thumb = thumbs[activeIndex];
+
+      mainImg.src = thumb.dataset.src;
+      caption.innerHTML = `<span>${thumb.dataset.stop}</span>${thumb.dataset.caption}`;
+
+      thumbs.forEach((t, i) => {
+        t.classList.toggle('is-active', i === activeIndex);
+        t.setAttribute('aria-selected', String(i === activeIndex));
       });
+      thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    };
+
+    thumbs.forEach((thumb, i) => {
+      thumb.addEventListener('click', () => selectThumb(i));
     });
+
+    // arrow-key navigation while the viewer is open
+    document.addEventListener('keydown', (e) => {
+      if (!modal || !modal.classList.contains('is-open')) return;
+      if (e.key === 'ArrowRight') { e.preventDefault(); selectThumb(activeIndex + 1); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); selectThumb(activeIndex - 1); }
+    });
+
+    // swipe left/right on the photo to move between images
+    if (stage) {
+      let touchStartX = 0;
+      let touchStartY = 0;
+
+      stage.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].clientX;
+        touchStartY = e.changedTouches[0].clientY;
+      }, { passive: true });
+
+      stage.addEventListener('touchend', (e) => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+        selectThumb(activeIndex + (dx < 0 ? 1 : -1));
+      }, { passive: true });
+    }
   })();
 
   // ===== GIFT QR — bride / groom tabs =====
