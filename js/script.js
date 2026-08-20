@@ -178,6 +178,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
 
+  // ===== PASSPORT COVER (tap or swipe left to open) =====
+  (function initPassportCover() {
+    const wrap = document.querySelector('.passport-wrap');
+    const cover = document.getElementById('passport-cover');
+    if (!wrap || !cover) return;
+
+    const open = () => wrap.classList.add('is-open');
+    cover.addEventListener('click', open);
+
+    let touchStartX = 0;
+    let touchStartY = 0;
+    cover.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].clientX;
+      touchStartY = e.changedTouches[0].clientY;
+    }, { passive: true });
+
+    cover.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      if (dx < -30 && Math.abs(dx) > Math.abs(dy)) open();
+    }, { passive: true });
+  })();
+
   // ===== ALBUM VIEWER (full-screen photo + thumbnail strip) =====
   (function initAlbumViewer() {
     const mainImg = document.getElementById('album-viewer-image');
