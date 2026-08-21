@@ -201,6 +201,50 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   })();
 
+  // ===== GALLERY COVER AUTO-SLIDE (before opening the full album) =====
+  (function initGalleryAutoSlide() {
+    const gallerySlide = document.getElementById('gallery');
+    const cover = document.querySelector('.gallery-cover');
+    const img = cover ? cover.querySelector('img') : null;
+    const caption = cover ? cover.querySelector('.gallery-cover-caption') : null;
+    const thumbs = Array.from(document.querySelectorAll('.album-thumb'));
+    if (!gallerySlide || !img || !caption || !thumbs.length) return;
+
+    const FADE_MS = 650;
+    const HOLD_MS = 4000;
+    let index = 0;
+    let timer = null;
+
+    const showNext = () => {
+      index = (index + 1) % thumbs.length;
+      const thumb = thumbs[index];
+
+      img.style.opacity = '0';
+      setTimeout(() => {
+        img.src = thumb.dataset.src;
+        img.alt = thumb.dataset.caption;
+        caption.innerHTML = `<span>${thumb.dataset.stop}</span>${thumb.dataset.caption}`;
+        const reveal = () => { img.style.opacity = '1'; };
+        if (img.decode) img.decode().then(reveal).catch(reveal);
+        else reveal();
+      }, FADE_MS);
+    };
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !timer) {
+            timer = setInterval(showNext, HOLD_MS);
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.3 });
+      observer.observe(gallerySlide);
+    } else {
+      timer = setInterval(showNext, HOLD_MS);
+    }
+  })();
+
   // ===== ALBUM VIEWER (full-screen photo + thumbnail strip) =====
   (function initAlbumViewer() {
     const mainImg = document.getElementById('album-viewer-image');
